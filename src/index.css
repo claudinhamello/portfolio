@@ -2,74 +2,167 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .liquid-glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-claro font-sans text-tinta antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif font-normal;
+  }
+  /* Âncoras não ficam escondidas atrás do header fixo */
+  section[id] {
+    scroll-margin-top: 72px;
+  }
+  :focus-visible {
+    outline: 2px solid #a8f3f8;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply fixed left-4 top-3 z-[100] -translate-y-24 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-tinta shadow-lg transition-transform;
+  }
+  .skip-link:focus {
+    @apply translate-y-0;
   }
 
-  .liquid-glass-nav {
-    background: rgba(15, 18, 38, 0.55);
-    backdrop-filter: blur(20px) saturate(190%);
-    -webkit-backdrop-filter: blur(20px) saturate(190%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5),
-                inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+  /* Gradiente de ação roxo → teal */
+  .btn-acao {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold text-white transition duration-300;
+    background: linear-gradient(100deg, #6c4fd8 0%, #22b5b5 100%);
+    box-shadow: 0 10px 30px -10px rgba(108, 79, 216, 0.65);
+  }
+  .btn-acao:hover {
+    box-shadow: 0 14px 34px -10px rgba(34, 181, 181, 0.7);
+    transform: translateY(-1px);
   }
 
-  .liquid-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .liquid-card:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
-    border-color: rgba(255, 255, 255, 0.22);
-    box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.15),
-                0 0 30px 0 rgba(158, 127, 255, 0.1);
-  }
-
-  .text-gradient-hero {
-    background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 50%, #2dd4bf 100%);
+  .texto-gradiente {
+    background: linear-gradient(95deg, #8a6cf0 0%, #5b8de8 50%, #22c3c0 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
+    /* evita cortar a cauda das itálicas */
+    padding-right: 0.08em;
+    padding-bottom: 0.06em;
   }
 
-  .text-gradient-cyan {
-    background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  /* Header em vidro */
+  .header-vidro {
+    background: rgba(15, 32, 60, 0.55);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .painel-vidro {
+    background: rgba(15, 32, 60, 0.82);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
 
-  .btn-liquid {
-    background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
-    box-shadow: 0 0 25px rgba(139, 92, 246, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Traço do item ativo: 2px, gradiente roxo → teal, 6px abaixo do texto */
+  .nav-link {
+    @apply relative inline-flex items-center gap-1 py-1 text-[15px] font-medium text-white/80 transition-colors hover:text-white;
   }
-
-  .btn-liquid:hover {
-    box-shadow: 0 0 35px rgba(6, 182, 212, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    transform: translateY(-2px) scale(1.02);
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #6c4fd8, #22b5b5);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .nav-link[aria-current='true'],
+  .nav-link[aria-current='page'] {
+    @apply text-white;
+  }
+  .nav-link[aria-current='true']::after,
+  .nav-link[aria-current='page']::after {
+    transform: scaleX(1);
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* ---------- Logo animado ---------- */
+.logo-arco {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: logo-desenha 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
 }
-::-webkit-scrollbar-track {
-  background: #0b0c16;
+.logo-risco {
+  opacity: 0;
+  animation: logo-risco 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) 1.35s forwards;
 }
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
+.logo-risco--esq {
+  --de: -9px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+.logo-risco--dir {
+  --de: 9px;
+}
+@keyframes logo-desenha {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes logo-risco {
+  from {
+    opacity: 0;
+    transform: translateX(var(--de));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ---------- Ticker ---------- */
+.ticker-trilho {
+  display: flex;
+  width: max-content;
+  animation: ticker 38s linear infinite;
+}
+.ticker:hover .ticker-trilho,
+.ticker:focus-within .ticker-trilho {
+  animation-play-state: paused;
+}
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .logo-arco {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .logo-risco {
+    animation: none;
+    opacity: 1;
+  }
+  .ticker-trilho {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
 }

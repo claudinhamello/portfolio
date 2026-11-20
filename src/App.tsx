@@ -1,88 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { Header } from './components/Header';
+import { useEffect, useState } from 'react';
+import { Header, type SecaoAtiva } from './components/Header';
 import { Hero } from './components/Hero';
-import { Projects } from './components/Projects';
-import { ProcessTimeline } from './components/ProcessTimeline';
-import { DesignSystemShowcase } from './components/DesignSystemShowcase';
-import { Footer } from './components/Footer';
-import { BastidoresModal } from './components/BastidoresModal';
-import { ContactModal } from './components/ContactModal';
 
 export default function App() {
-  const [isBastidoresOpen, setIsBastidoresOpen] = useState(false);
-  const [isContactOpen, setIsContactOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [secaoAtiva, setSecaoAtiva] = useState<SecaoAtiva>('inicio');
 
+  // Marca no menu a seção visível: "Início" (hero) ou "Projetos".
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'projetos', 'processo', 'design-system'];
-      const scrollPosition = window.scrollY + 200;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const top = element.offsetTop;
-          const height = element.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const ids: Exclude<SecaoAtiva, null>[] = ['inicio', 'projetos'];
+    const visiveis = new Set<string>();
+    const observador = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((e) => (e.isIntersecting ? visiveis.add(e.target.id) : visiveis.delete(e.target.id)));
+        setSecaoAtiva(ids.find((id) => visiveis.has(id)) ?? null);
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observador.observe(el);
+    });
+    return () => observador.disconnect();
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0b0c16] text-slate-100 font-sans selection:bg-purple-500 selection:text-white antialiased overflow-x-hidden relative">
-      {/* Sticky Liquid Glass Navigation */}
-      <Header
-        onOpenContact={() => setIsContactOpen(true)}
-        onOpenBastidores={() => setIsBastidoresOpen(true)}
-        activeSection={activeSection}
-      />
-
-      {/* Hero Section matching the original screenshot layout and exact text */}
-      <main>
-        <Hero
-          onOpenBastidores={() => setIsBastidoresOpen(true)}
-          onOpenContact={() => setIsContactOpen(true)}
-        />
-
-        {/* Featured Case Studies */}
-        <Projects
-          onOpenBastidores={() => setIsBastidoresOpen(true)}
-          onOpenContact={() => setIsContactOpen(true)}
-        />
-
-        {/* End-to-End UX Process Timeline */}
-        <ProcessTimeline
-          onOpenBastidores={() => setIsBastidoresOpen(true)}
-        />
-
-        {/* Material 3 & Figma Tokens Showcase */}
-        <DesignSystemShowcase />
+    <>
+      <a href="#conteudo" className="skip-link">
+        Pular para o conteúdo
+      </a>
+      <Header secaoAtiva={secaoAtiva} />
+      <main id="conteudo" tabIndex={-1} className="outline-none">
+        <Hero />
+        {/* Âncoras das próximas seções — conteúdo ainda a construir */}
+        <section id="projetos" aria-label="Projetos" />
+        <section id="sobre" aria-label="Sobre mim" />
+        <section id="processo" aria-label="Como trabalho" />
+        <section id="contato" aria-label="Contato" />
       </main>
-
-      {/* Footer */}
-      <Footer
-        onOpenContact={() => setIsContactOpen(true)}
-        onOpenBastidores={() => setIsBastidoresOpen(true)}
-      />
-
-      {/* Interactive Modals */}
-      <BastidoresModal
-        isOpen={isBastidoresOpen}
-        onClose={() => setIsBastidoresOpen(false)}
-        onOpenContact={() => setIsContactOpen(true)}
-      />
-
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
-    </div>
+    </>
   );
 }

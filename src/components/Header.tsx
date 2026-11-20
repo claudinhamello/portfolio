@@ -1,178 +1,264 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, Sparkles, Menu, X } from 'lucide-react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { ChevronDown, Menu, X } from 'lucide-react';
+import { LogoAnimado } from './LogoAnimado';
+
+export type SecaoAtiva = 'inicio' | 'projetos' | null;
+
+// Itens do submenu "Projetos". Troque os href quando as páginas de cada projeto existirem.
+export const projetosMenu = [
+  { rotulo: 'BeReady', href: '#projetos' },
+  { rotulo: 'Focus Clínica', href: '#projetos' },
+  { rotulo: 'Fast Money', href: '#projetos' },
+  { rotulo: 'Redesign de placas de ruas', href: '#projetos' },
+];
+const verTodos = { rotulo: 'Ver todos os projetos', href: '#projetos' };
 
 interface HeaderProps {
-  onOpenContact: () => void;
-  onOpenBastidores: () => void;
-  activeSection: string;
+  secaoAtiva: SecaoAtiva;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenContact, onOpenBastidores, activeSection }) => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export function Header({ secaoAtiva }: HeaderProps) {
+  const [rolou, setRolou] = useState(false);
+  const [submenuAberto, setSubmenuAberto] = useState(false);
+  const [mobileAberto, setMobileAberto] = useState(false);
+
+  const botaoProjetosRef = useRef<HTMLButtonElement>(null);
+  const submenuRef = useRef<HTMLUListElement>(null);
+  const botaoMobileRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const aoRolar = () => setRolou(window.scrollY > 24);
+    aoRolar();
+    window.addEventListener('scroll', aoRolar, { passive: true });
+    return () => window.removeEventListener('scroll', aoRolar);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  // Fecha o submenu ao clicar fora
+  useEffect(() => {
+    if (!submenuAberto) return;
+    const aoClicar = (e: MouseEvent) => {
+      const alvo = e.target as Node;
+      if (!submenuRef.current?.contains(alvo) && !botaoProjetosRef.current?.contains(alvo)) {
+        setSubmenuAberto(false);
+      }
+    };
+    document.addEventListener('mousedown', aoClicar);
+    return () => document.removeEventListener('mousedown', aoClicar);
+  }, [submenuAberto]);
+
+  // Esc fecha o menu mobile
+  useEffect(() => {
+    if (!mobileAberto) return;
+    const aoTeclar = (e: globalThis.KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileAberto(false);
+        botaoMobileRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', aoTeclar);
+    return () => document.removeEventListener('keydown', aoTeclar);
+  }, [mobileAberto]);
+
+  const linksDoSubmenu = () =>
+    Array.from(submenuRef.current?.querySelectorAll<HTMLAnchorElement>('a') ?? []);
+
+  const focarItem = (indice: number) => {
+    const links = linksDoSubmenu();
+    if (!links.length) return;
+    links[(indice + links.length) % links.length].focus();
+  };
+
+  const aoTeclarBotao = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSubmenuAberto(true);
+      requestAnimationFrame(() => focarItem(0));
+    } else if (e.key === 'Escape') {
+      setSubmenuAberto(false);
     }
   };
 
+  const aoTeclarSubmenu = (e: KeyboardEvent<HTMLUListElement>) => {
+    const links = linksDoSubmenu();
+    const atual = links.indexOf(document.activeElement as HTMLAnchorElement);
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      focarItem(atual + 1);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      focarItem(atual - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      focarItem(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      focarItem(links.length - 1);
+    } else if (e.key === 'Escape') {
+      setSubmenuAberto(false);
+      botaoProjetosRef.current?.focus();
+    }
+  };
+
+  const fecharTudo = () => {
+    setSubmenuAberto(false);
+    setMobileAberto(false);
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4 sm:px-8 py-4 sm:py-6">
-      <div className="max-w-7xl mx-auto">
-        <div 
-          className={`liquid-glass-nav rounded-full px-5 py-3 sm:px-6 sm:py-3.5 transition-all duration-300 flex items-center justify-between ${
-            scrolled ? 'shadow-2xl shadow-purple-950/40 border-white/20' : ''
-          }`}
+    <header className="header-vidro fixed inset-x-0 top-0 z-50 text-white">
+      <div
+        className={`mx-auto flex max-w-[1280px] items-center justify-between px-5 transition-[height] duration-300 sm:px-8 ${
+          rolou ? 'h-16' : 'h-[88px]'
+        }`}
+      >
+        {/* Logo */}
+        <a
+          href="#inicio"
+          onClick={fecharTudo}
+          className="flex flex-col items-start"
+          aria-label="Claudia Mello — voltar ao início"
         >
-          {/* Logo Orb */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="relative w-9 h-9 rounded-full bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-500 p-[2px] transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-cyan-500/30">
-              <div className="w-full h-full rounded-full bg-[#0d1024] flex items-center justify-center overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/40 via-purple-500/40 to-pink-500/40 animate-pulse-glow" />
-                <div className="w-4 h-4 rounded-full bg-gradient-to-tr from-cyan-300 to-purple-400 shadow-inner" />
-              </div>
-            </div>
-            <span className="font-display font-bold text-white text-base tracking-wide hidden sm:inline-block">
-              Claudia<span className="text-cyan-400 font-light">.design</span>
-            </span>
-          </a>
+          <LogoAnimado
+            className={`transition-all duration-300 ${rolou ? 'h-8 w-[43px]' : 'h-10 w-[54px]'}`}
+          />
+          <span
+            aria-hidden="true"
+            className={`overflow-hidden whitespace-nowrap font-serif text-[15px] leading-none tracking-wide text-white/90 transition-all duration-300 ${
+              rolou ? 'mt-0 max-h-0 opacity-0' : 'mt-1.5 max-h-5 opacity-100'
+            }`}
+          >
+            Claudia Mello
+          </span>
+        </a>
 
-          {/* Nav Links - Desktop */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <button
-              onClick={() => scrollToSection('home')}
-              className={`relative py-1 transition-colors ${
-                activeSection === 'home' 
-                  ? 'text-white font-semibold' 
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              Home
-              {activeSection === 'home' && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full shadow-[0_0_8px_#38bdf8]" />
-              )}
-            </button>
-
-            <button
-              onClick={() => scrollToSection('projetos')}
-              className={`relative py-1 transition-colors ${
-                activeSection === 'projetos' 
-                  ? 'text-white font-semibold' 
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              Projetos
-              {activeSection === 'projetos' && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full shadow-[0_0_8px_#38bdf8]" />
-              )}
-            </button>
-
-            <button
-              onClick={() => scrollToSection('processo')}
-              className={`relative py-1 transition-colors ${
-                activeSection === 'processo' 
-                  ? 'text-white font-semibold' 
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              Processo UX
-              {activeSection === 'processo' && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full shadow-[0_0_8px_#38bdf8]" />
-              )}
-            </button>
-
-            <button
-              onClick={() => scrollToSection('design-system')}
-              className={`relative py-1 transition-colors ${
-                activeSection === 'design-system' 
-                  ? 'text-white font-semibold' 
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              Design System
-            </button>
-
-            <button
-              onClick={onOpenBastidores}
-              className="text-purple-300 hover:text-purple-100 flex items-center gap-1.5 transition-colors"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-              <span>Bastidores</span>
-            </button>
-          </nav>
-
-          {/* Contact Button */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={onOpenContact}
-              className="group relative inline-flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-sm font-medium text-white transition-all duration-300 border border-white/20 hover:border-cyan-400/60 bg-white/5 hover:bg-white/10 backdrop-blur-md hover:shadow-[0_0_20px_rgba(56,189,248,0.35)]"
-            >
-              <span>Vamos conversar</span>
-              <ArrowRight className="w-4 h-4 text-cyan-400 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
-
-            {/* Mobile menu toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-full text-slate-300 hover:text-white bg-white/5 border border-white/10"
-              aria-label="Menu"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Dropdown */}
-        {mobileMenuOpen && (
-          <div className="md:hidden mt-3 p-6 rounded-2xl liquid-glass-nav border border-white/20 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 duration-300">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="text-left text-lg text-slate-200 hover:text-white py-2"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => scrollToSection('projetos')}
-              className="text-left text-lg text-slate-200 hover:text-white py-2"
-            >
-              Projetos
-            </button>
-            <button
-              onClick={() => scrollToSection('processo')}
-              className="text-left text-lg text-slate-200 hover:text-white py-2"
-            >
-              Processo UX
-            </button>
-            <button
-              onClick={() => scrollToSection('design-system')}
-              className="text-left text-lg text-slate-200 hover:text-white py-2"
-            >
-              Design System
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenBastidores();
+        {/* Navegação — desktop */}
+        <nav aria-label="Principal" className="hidden md:block">
+          <ul className="flex items-center gap-12">
+            <li>
+              <a
+                href="#inicio"
+                className="nav-link"
+                aria-current={secaoAtiva === 'inicio' ? 'true' : undefined}
+              >
+                Início
+              </a>
+            </li>
+            <li
+              className="relative"
+              onMouseEnter={() => setSubmenuAberto(true)}
+              onMouseLeave={() => setSubmenuAberto(false)}
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node)) setSubmenuAberto(false);
               }}
-              className="text-left text-lg text-cyan-400 flex items-center gap-2 py-2"
             >
-              <Sparkles className="w-4 h-4" />
-              Ver Bastidores
-            </button>
-          </div>
-        )}
+              <button
+                ref={botaoProjetosRef}
+                type="button"
+                className="nav-link"
+                aria-expanded={submenuAberto}
+                aria-controls="submenu-projetos"
+                aria-current={secaoAtiva === 'projetos' ? 'true' : undefined}
+                onClick={() => setSubmenuAberto((v) => !v)}
+                onKeyDown={aoTeclarBotao}
+              >
+                Projetos
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${submenuAberto ? 'rotate-180' : ''}`}
+                  aria-hidden="true"
+                />
+              </button>
+
+              {/* pt-4 cria uma "ponte" para o mouse não perder o hover */}
+              <div
+                className={`absolute left-1/2 top-full -translate-x-1/2 pt-4 ${submenuAberto ? 'block' : 'hidden'}`}
+              >
+                <ul
+                  id="submenu-projetos"
+                  ref={submenuRef}
+                  onKeyDown={aoTeclarSubmenu}
+                  className="painel-vidro w-64 rounded-2xl p-2 shadow-2xl shadow-black/30"
+                >
+                  {projetosMenu.map((p) => (
+                    <li key={p.rotulo}>
+                      <a
+                        href={p.href}
+                        onClick={fecharTudo}
+                        className="block rounded-xl px-4 py-2.5 text-sm text-white/85 transition-colors hover:bg-white/10 hover:text-white focus-visible:bg-white/10"
+                      >
+                        {p.rotulo}
+                      </a>
+                    </li>
+                  ))}
+                  <li className="mt-1 border-t border-white/15 pt-1">
+                    <a
+                      href={verTodos.href}
+                      onClick={fecharTudo}
+                      className="block rounded-xl px-4 py-2.5 text-sm font-semibold text-gelo transition-colors hover:bg-white/10 focus-visible:bg-white/10"
+                    >
+                      {verTodos.rotulo} →
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+
+        {/* CTA — desktop */}
+        <a href="#contato" className="btn-acao hidden px-6 py-3 text-[15px] md:inline-flex">
+          Vamos conversar
+        </a>
+
+        {/* Botão do menu — mobile */}
+        <button
+          ref={botaoMobileRef}
+          type="button"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/5 md:hidden"
+          aria-expanded={mobileAberto}
+          aria-controls="menu-mobile"
+          aria-label={mobileAberto ? 'Fechar menu' : 'Abrir menu'}
+          onClick={() => setMobileAberto((v) => !v)}
+        >
+          {mobileAberto ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+        </button>
+      </div>
+
+      {/* Painel — mobile */}
+      <div id="menu-mobile" className={`px-4 pb-4 md:hidden ${mobileAberto ? 'block' : 'hidden'}`}>
+        <nav aria-label="Principal (celular)" className="painel-vidro rounded-2xl p-5">
+          <ul className="flex flex-col gap-1">
+            <li>
+              <a
+                href="#inicio"
+                onClick={fecharTudo}
+                className="nav-link py-2 text-lg"
+                aria-current={secaoAtiva === 'inicio' ? 'true' : undefined}
+              >
+                Início
+              </a>
+            </li>
+            <li className="pt-3">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">Projetos</span>
+              <ul className="mt-2 flex flex-col">
+                {[...projetosMenu, verTodos].map((p) => (
+                  <li key={p.rotulo}>
+                    <a
+                      href={p.href}
+                      onClick={fecharTudo}
+                      className="block rounded-lg py-2 text-base text-white/85 hover:text-white"
+                    >
+                      {p.rotulo}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          </ul>
+          <a href="#contato" onClick={fecharTudo} className="btn-acao mt-5 w-full px-6 py-3 text-base">
+            Vamos conversar
+          </a>
+        </nav>
       </div>
     </header>
   );
-};
+}
