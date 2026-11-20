@@ -31,6 +31,9 @@ export default {
         processo: '#123B5A',
         // Roxo mais luminoso, para destaques sobre fundo escuro
         ametista: '#8A6CF0',
+        // Cores de destaque do projeto da página (definidas por página em --acento / --acento-2, ver index.css)
+        acento: 'rgb(var(--acento) / <alpha-value>)',
+        'acento-2': 'rgb(var(--acento-2) / <alpha-value>)',
       },
     },
   },

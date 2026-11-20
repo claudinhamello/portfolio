@@ -10,9 +10,17 @@ Objetivo: um portfólio "fora da caixa", que mostre processo e maturidade sem pa
 - Site, conversa e commits em pt-BR.
 - O disco é NTFS e lento: não use `optimizeDeps.exclude` em pacotes grandes (isso deixou o dev em branco).
 - A `main` ainda tem o template falso do Bolt ("Luciana Silva"). Não publique antes do merge de `redesign-header-hero`.
-- Pendente: `vercel.json` + React Router quando existirem páginas de projeto (a primeira é o BeReady em `/beready-app`),
-  com links reais em `projetosMenu` (Header) e nos cards. Em todas as páginas: header de vidro, voltar ao topo
-  e navegação entre projetos.
+- Em todas as páginas: header de vidro, voltar ao topo e (pendente) navegação entre projetos.
+
+## Páginas e estrutura
+
+- Rotas (React Router) em `src/App.tsx`; endereços em `rotas` (`src/conteudo.ts`). `vercel.json` faz o rewrite de SPA.
+- `src/paginas/`: uma página por arquivo. Cada página passa ao Header os links das suas seções (`inicio` + `secoes`) e ao Rodapé.
+- Páginas de projeto: conteúdo em `src/projetos/<projeto>/dados.ts`, seções no mesmo diretório. Paleta híbrida: esqueleto do
+  portfólio + destaques do projeto via `--acento` / `--acento-2` (classes `text-acento`, `bg-acento-2` etc.), definidos na página.
+- Imagens: `public/home/`, `public/comum/` (compartilhadas, logos), `public/projetos/<projeto>/`. Telas de app: 360×852,
+  na moldura `src/projetos/Celular.tsx`. Imagem que ainda não existe mostra um espaço reservado (`ImagemComReserva`).
+- Links: use `Ancora` (`#secao` na página; `/rota` ou `/#secao` para outra página, sem recarregar).
 
 ## Regras de conteúdo
 

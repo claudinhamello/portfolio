@@ -1,4 +1,6 @@
 import { CabecalhoSecao } from './CabecalhoSecao';
+import { Ancora } from './Ancora';
+import { rotas } from '../conteudo';
 
 interface Projeto {
   nome: string;
@@ -21,7 +23,8 @@ const projetos: Projeto[] = [
     descricao:
       'App que ajuda famílias a montar, organizar e manter mochilas de emergência, com controle de validade dos itens.',
     tags: ['Pesquisa com usuários', 'Prototipação', 'Testes de usabilidade'],
-    capa: '/capa-beready.webp',
+    capa: '/home/capa-beready.webp',
+    href: rotas.beready,
   },
   {
     nome: 'Focus Clínica',
@@ -30,7 +33,7 @@ const projetos: Projeto[] = [
     descricao:
       'Landing page de um SaaS para clínicas. Única designer do time, acompanhei três devs na implementação.',
     tags: ['Design de interface', 'Colaboração com devs', 'Figma'],
-    capa: '/capa-focus-clinica.webp',
+    capa: '/home/capa-focus-clinica.webp',
   },
   {
     nome: 'Fast Money',
@@ -38,7 +41,7 @@ const projetos: Projeto[] = [
     contexto: 'Certificação Google UX · 2023',
     descricao: 'App responsivo de transferência via Pix, do erro de destinatário ao saldo insuficiente.',
     tags: ['Entrevistas', 'Testes de usabilidade', 'Design system'],
-    capa: '/capa-fast-money.webp',
+    capa: '/home/capa-fast-money.webp',
   },
   {
     nome: 'Redesign de placas de ruas',
@@ -47,7 +50,7 @@ const projetos: Projeto[] = [
     descricao:
       'Nova sinalização de ruas a partir de uma pesquisa em que 6 de 8 motoristas tinham dificuldade para se localizar.',
     tags: ['Pesquisa', 'Diagnóstico', 'Redesign'],
-    capa: '/capa-sinalizacao-urbana.webp',
+    capa: '/home/capa-sinalizacao-urbana.webp',
   },
 ];
 
@@ -79,12 +82,16 @@ function CardProjeto({ p }: { p: Projeto }) {
 
         <div className="mt-auto pt-6">
           {p.href ? (
-            <a href={p.href} className="inline-flex items-center gap-1.5 text-[15px] font-semibold text-roxo">
-              Ver projeto
+            <Ancora
+              href={p.href}
+              aria-label={`Saiba mais sobre o projeto ${p.nome}`}
+              className="inline-flex items-center gap-1.5 text-[15px] font-semibold text-roxo"
+            >
+              Saiba mais
               <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
                 →
               </span>
-            </a>
+            </Ancora>
           ) : (
             <span className="text-[14px] font-medium text-secundario/80">Case completo em breve</span>
           )}
