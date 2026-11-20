@@ -6,6 +6,15 @@ import { produto } from './dados';
 
 const total = produto.telas.length;
 
+// Três níveis de profundidade, todos de frente: central, adjacentes e as mais distantes.
+// Quanto mais longe, menor, mais deslocada para o lado e mais apagada (escurecida, sem transparência,
+// para uma tela não aparecer através da outra).
+const niveis = [
+  { escala: 1, deslocamento: 0, opacidade: 1, filtro: 'none' },
+  { escala: 0.8, deslocamento: 0.62, opacidade: 1, filtro: 'brightness(0.68) saturate(0.7)' },
+  { escala: 0.62, deslocamento: 1.08, opacidade: 1, filtro: 'brightness(0.45) saturate(0.5)' },
+];
+
 // Distância circular até a tela ativa (-3..2 com 6 telas): o carrossel não tem fim
 const distancia = (i: number, ativo: number) => ((i - ativo + total + Math.floor(total / 2)) % total) - Math.floor(total / 2);
 
@@ -41,7 +50,7 @@ export function ProdutoCarrossel() {
     <section
       id="produto"
       aria-labelledby="titulo-produto"
-      className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#0A3A42_0%,#0E5964_45%,#3A2D78_100%)] py-20 text-white sm:bg-[linear-gradient(160deg,#0A3A42_0%,#0E5964_45%,#3A2D78_100%)] sm:py-28"
+      className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#0A3A42_0%,#0E5964_45%,#3A2D78_100%)] py-16 text-white sm:bg-[linear-gradient(160deg,#0A3A42_0%,#0E5964_45%,#3A2D78_100%)] sm:py-20"
     >
       <div className="mx-auto max-w-pagina px-5 sm:px-8">
         <CabecalhoCase id="titulo-produto" escuro rotulo={produto.rotulo} titulo={produto.titulo} />
@@ -57,7 +66,7 @@ export function ProdutoCarrossel() {
         onPointerDown={(e) => (inicioToque.current = e.clientX)}
         onPointerUp={aoSoltar}
         onPointerCancel={() => (inicioToque.current = null)}
-        className="relative mx-auto mt-14 h-[500px] max-w-pagina touch-pan-y select-none outline-none [--passo:clamp(84px,22vw,220px)] [--largura:clamp(190px,24vw,270px)] [perspective:1400px] focus-visible:ring-2 focus-visible:ring-[#CFBDFE] sm:h-[600px] lg:h-[720px]"
+        className="relative mx-auto mt-10 h-[calc(var(--largura)*2.5+16px)] max-w-pagina touch-pan-y select-none outline-none [--largura:clamp(150px,min(52vw,calc((100svh-340px)/2.5)),250px)] focus-visible:ring-2 focus-visible:ring-[#CFBDFE]"
       >
         {/* Brilho atrás da tela central */}
         <div
@@ -68,6 +77,7 @@ export function ProdutoCarrossel() {
         {produto.telas.map((t, i) => {
           const d = distancia(i, ativo);
           const visivel = Math.abs(d) <= 2;
+          const n = niveis[Math.min(Math.abs(d), 2)];
           return (
             <div
               key={t.titulo}
@@ -77,9 +87,9 @@ export function ProdutoCarrossel() {
                 d === 0 ? '' : 'cursor-pointer'
               }`}
               style={{
-                transform: `translate(-50%, -50%) translateX(calc(var(--passo) * ${d})) translateZ(${-Math.abs(d) * 150}px) rotateY(${-d * 32}deg) scale(${1 - Math.abs(d) * 0.08})`,
-                opacity: visivel ? [1, 0.6, 0.28][Math.abs(d)] : 0,
-                filter: d === 0 ? 'none' : `saturate(0.7) brightness(${1 - Math.abs(d) * 0.12})`,
+                transform: `translate(-50%, -50%) translateX(calc(var(--largura) * ${Math.sign(d) * n.deslocamento})) scale(${n.escala})`,
+                opacity: visivel ? n.opacidade : 0,
+                filter: n.filtro,
                 zIndex: 10 - Math.abs(d),
                 pointerEvents: visivel ? 'auto' : 'none',
               }}
@@ -91,12 +101,14 @@ export function ProdutoCarrossel() {
       </div>
 
       {/* Legenda da tela ativa e navegação */}
-      <div className="mx-auto mt-10 max-w-xl px-5 text-center">
+      {/* Largura suficiente para a legenda caber numa linha no desktop; no celular ela reserva duas linhas,
+          para as setas não mudarem de lugar ao trocar de tela */}
+      <div className="mx-auto mt-6 max-w-4xl px-5 text-center">
         <div aria-live="polite">
           <h3 className="font-sans text-[20px] font-semibold">{tela.titulo}</h3>
-          <p className="mt-2 text-[16px] leading-relaxed text-[#C9D3E3]">{tela.texto}</p>
+          <p className="mt-2 min-h-[3.25em] text-[16px] leading-relaxed text-[#C9D3E3] lg:min-h-0 lg:whitespace-nowrap">{tela.texto}</p>
         </div>
-        <div className="mt-8 flex items-center justify-center gap-5">
+        <div className="mt-5 flex items-center justify-center gap-5">
           {[
             { passo: -1, rotulo: 'Tela anterior', Icone: ArrowLeft },
             { passo: 1, rotulo: 'Próxima tela', Icone: ArrowRight },
