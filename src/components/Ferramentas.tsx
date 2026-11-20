@@ -107,17 +107,15 @@ function CardCompetencia({ c, numero, ativa, aoAtivar }: CardProps) {
     <li
       className={`group relative flex flex-col overflow-hidden rounded-3xl border bg-white p-6 transition duration-300 sm:p-7 ${
         contem
-          ? '-translate-y-1 border-roxo/40 shadow-[0_24px_50px_-30px_rgba(108,79,216,0.5)]'
-          : 'border-nevoa hover:-translate-y-1 hover:border-roxo/30 hover:shadow-[0_24px_50px_-32px_rgba(18,59,90,0.45)]'
+          ? '-translate-y-1 border-nevoa shadow-[0_24px_50px_-30px_rgba(108,79,216,0.5)]'
+          : 'border-nevoa hover:-translate-y-1 hover:shadow-[0_24px_50px_-32px_rgba(18,59,90,0.45)]'
       } ${apagado ? 'opacity-45' : ''}`}
     >
-      {/* Filete em gradiente no topo: aparece no hover e no card que contém a ferramenta ativa */}
-      <span
-        aria-hidden="true"
-        className={`absolute inset-x-0 top-0 h-[3px] origin-left bg-[linear-gradient(90deg,#6C4FD8,#22B5B5)] transition-transform duration-500 group-hover:scale-x-100 ${
-          contem ? 'scale-x-100' : 'scale-x-0'
-        }`}
-      />
+      {/* Lateral esquerda sólida, sempre visível (ver .borda-base no index.css) */}
+      <span aria-hidden="true" className="borda-base" />
+      {/* No hover (ou quando contém a ferramenta ativa), a borda se desenha da esquerda para a direita
+          pelas 4 bordas, em gradiente. Ver .borda-revelada no index.css */}
+      <span aria-hidden="true" className={`borda-revelada ${contem ? 'borda-revelada--ativa' : ''}`} />
 
       <span className="texto-gradiente relative font-serif text-[22px] leading-none">
         {String(numero).padStart(2, '0')}

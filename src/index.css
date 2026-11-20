@@ -144,6 +144,34 @@
   }
 }
 
+/* ---------- Borda dos cards de competência ---------- */
+/* As duas camadas têm a mesma geometria (contorno de 3px recortado pelo card), então a espessura é idêntica. */
+.borda-base,
+.borda-revelada {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 3px;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+/* Repouso: lateral esquerda sólida que percorre metade da curva dos cantos e some */
+.borda-base {
+  background: linear-gradient(90deg, #6c4fd8 0, #6c4fd8 8px, transparent 18px);
+}
+/* Hover: contorno em gradiente que se desenha da esquerda para a direita pelas 4 bordas */
+.borda-revelada {
+  background: linear-gradient(90deg, #6c4fd8 0%, #4e83d8 50%, #22b5b5 100%);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.group:hover > .borda-revelada,
+.borda-revelada--ativa {
+  clip-path: inset(0 0 0 0);
+}
+
 /* ---------- Logo animado ---------- */
 .logo-arco {
   stroke-dasharray: 1;
