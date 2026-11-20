@@ -2,7 +2,14 @@ import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { LogoAnimado } from './LogoAnimado';
 
-export type SecaoAtiva = 'inicio' | 'projetos' | null;
+export type SecaoAtiva = 'inicio' | 'projetos' | 'sobre' | 'processo' | 'ferramentas' | 'contato' | null;
+
+// Seções da Home que entram no menu depois de "Projetos" (o contato fica no botão "Vamos conversar")
+const secoesMenu = [
+  { id: 'sobre', rotulo: 'Sobre mim' },
+  { id: 'processo', rotulo: 'Como trabalho' },
+  { id: 'ferramentas', rotulo: 'Ferramentas' },
+] as const;
 
 // Itens do submenu "Projetos". Troque os href quando as páginas de cada projeto existirem.
 export const projetosMenu = [
@@ -140,8 +147,8 @@ export function Header({ secaoAtiva }: HeaderProps) {
         </a>
 
         {/* Navegação — desktop */}
-        <nav aria-label="Principal" className="hidden md:block">
-          <ul className="flex items-center gap-12">
+        <nav aria-label="Principal" className="hidden lg:block">
+          <ul className="flex items-center gap-8 xl:gap-10">
             <li>
               <a
                 href="#inicio"
@@ -209,11 +216,22 @@ export function Header({ secaoAtiva }: HeaderProps) {
                 </ul>
               </div>
             </li>
+            {secoesMenu.map((s) => (
+              <li key={s.id}>
+                <a
+                  href={`#${s.id}`}
+                  className="nav-link"
+                  aria-current={secaoAtiva === s.id ? 'true' : undefined}
+                >
+                  {s.rotulo}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
 
         {/* CTA — desktop */}
-        <a href="#contato" className="btn-acao hidden px-6 py-3 text-[15px] md:inline-flex">
+        <a href="#contato" className="btn-acao hidden px-6 py-3 text-[15px] lg:inline-flex">
           Vamos conversar
         </a>
 
@@ -221,7 +239,7 @@ export function Header({ secaoAtiva }: HeaderProps) {
         <button
           ref={botaoMobileRef}
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] lg:hidden"
           aria-expanded={mobileAberto}
           aria-controls="menu-mobile"
           aria-label={mobileAberto ? 'Fechar menu' : 'Abrir menu'}
@@ -234,7 +252,7 @@ export function Header({ secaoAtiva }: HeaderProps) {
       {/* Painel — mobile */}
       <div
         id="menu-mobile"
-        className={`pointer-events-auto mx-auto mt-3 max-w-[1216px] md:hidden ${mobileAberto ? 'block' : 'hidden'}`}
+        className={`pointer-events-auto mx-auto mt-3 max-w-[1216px] lg:hidden ${mobileAberto ? 'block' : 'hidden'}`}
       >
         <nav aria-label="Principal (celular)" className="vidro-liquido rounded-[28px] p-5">
           <ul className="flex flex-col gap-1">
@@ -264,6 +282,18 @@ export function Header({ secaoAtiva }: HeaderProps) {
                 ))}
               </ul>
             </li>
+            {secoesMenu.map((s) => (
+              <li key={s.id} className={s.id === 'sobre' ? 'pt-3' : undefined}>
+                <a
+                  href={`#${s.id}`}
+                  onClick={fecharTudo}
+                  className="nav-link py-2 text-lg"
+                  aria-current={secaoAtiva === s.id ? 'true' : undefined}
+                >
+                  {s.rotulo}
+                </a>
+              </li>
+            ))}
           </ul>
           <a href="#contato" onClick={fecharTudo} className="btn-acao mt-5 w-full px-6 py-3 text-base">
             Vamos conversar

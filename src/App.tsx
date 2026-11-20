@@ -11,9 +11,9 @@ import { Rodape } from './components/Rodape';
 export default function App() {
   const [secaoAtiva, setSecaoAtiva] = useState<SecaoAtiva>('inicio');
 
-  // Marca no menu a seção visível: "Início" (hero) ou "Projetos".
+  // Marca no menu a seção que está no meio da tela.
   useEffect(() => {
-    const ids: Exclude<SecaoAtiva, null>[] = ['inicio', 'projetos'];
+    const ids: Exclude<SecaoAtiva, null>[] = ['inicio', 'projetos', 'sobre', 'processo', 'ferramentas', 'contato'];
     const visiveis = new Set<string>();
     const observador = new IntersectionObserver(
       (entradas) => {
