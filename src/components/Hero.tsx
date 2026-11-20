@@ -92,7 +92,7 @@ export function Hero() {
         {/* Texto */}
         <div className="relative z-10 pb-10 pt-32 sm:pt-36 lg:w-[54%] lg:pb-20 lg:pt-28">
           <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-teal sm:text-[13px]">
-            Product Designer · Indaiatuba, SP
+            Designer de Produto · UX · UI
           </p>
 
           <h1
