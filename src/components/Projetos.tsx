@@ -34,6 +34,7 @@ const projetos: Projeto[] = [
       'Landing page de um SaaS para clínicas. Única designer do time, acompanhei três devs na implementação.',
     tags: ['Design de interface', 'Colaboração com devs', 'Figma'],
     capa: '/home/capa-focus-clinica.webp',
+    href: rotas.focusClinica,
   },
   {
     nome: 'Fast Money',

@@ -220,7 +220,7 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
         </nav>
 
         {/* CTA — desktop */}
-        <a href="#contato" className="btn-acao hidden px-6 py-3 text-[15px] lg:inline-flex">
+        <a href="#contato" className="btn-acao hidden whitespace-nowrap px-6 py-3 text-[15px] lg:inline-flex">
           Vamos conversar
         </a>
 

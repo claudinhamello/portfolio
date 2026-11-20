@@ -20,6 +20,9 @@ Objetivo: um portfólio "fora da caixa", que mostre processo e maturidade sem pa
   portfólio + destaques do projeto via `--acento` / `--acento-2` (classes `text-acento`, `bg-acento-2` etc.), definidos na página.
 - Imagens: `public/home/`, `public/comum/` (compartilhadas, logos), `public/projetos/<projeto>/`. Telas de app: 360×852,
   na moldura `src/projetos/Celular.tsx`. Imagem que ainda não existe mostra um espaço reservado (`ImagemComReserva`).
+- Cases: BeReady (`/beready-app`, celulares 3D e coverflow) e Focus Clínica (`/focus-clinica`, janela de navegador
+  e vitrine desktop/tablet/mobile). Cada case deve variar a linguagem visual em relação aos outros.
+- Focus Clínica é fictício e voluntário: sempre deixar isso claro; números da landing page são ilustrativos.
 - Links: use `Ancora` (`#secao` na página; `/rota` ou `/#secao` para outra página, sem recarregar).
 
 ## Regras de conteúdo

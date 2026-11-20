@@ -8,6 +8,7 @@ export const contato = {
 export const rotas = {
   home: '/',
   beready: '/beready-app',
+  focusClinica: '/focus-clinica',
 };
 
 /** Item de navegação: `id` é a seção (para o destaque do item ativo), `href` é o destino */
@@ -20,7 +21,7 @@ export interface ItemMenu {
 // Submenu "Projetos" do header. Projetos sem página ainda levam à seção de projetos da Home.
 export const projetosMenu = [
   { rotulo: 'BeReady', href: rotas.beready },
-  { rotulo: 'Focus Clínica', href: '/#projetos' },
+  { rotulo: 'Focus Clínica', href: rotas.focusClinica },
   { rotulo: 'Fast Money', href: '/#projetos' },
   { rotulo: 'Redesign de placas de ruas', href: '/#projetos' },
 ];
