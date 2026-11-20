@@ -8,7 +8,7 @@ import { CabecalhoSecao } from './CabecalhoSecao';
 const ferramentas = {
   figma: { nome: 'Figma', icone: '/Figma_logo.svg' },
   figmaAi: { nome: 'Figma AI', icone: '/Figma_logo.svg' },
-  figjam: { nome: 'FigJam', icone: '' },
+  figjam: { nome: 'FigJam', icone: '/Figma_logo.svg' },
   miro: { nome: 'Miro', icone: '/Miro_logo.svg' },
   googleForms: { nome: 'Google Forms', icone: '/Google_Forms_logo.svg' },
   notion: { nome: 'Notion', icone: '/Notion_logo.svg' },
@@ -17,9 +17,7 @@ const ferramentas = {
   chatgpt: { nome: 'ChatGPT', icone: '/ChatGPT_logo.svg' },
   gemini: { nome: 'Gemini', icone: '/Gemini_logo.svg' },
   claude: { nome: 'Claude', icone: '/Claude_logo.svg' },
-  uizard: { nome: 'Uizard', icone: '' },
   materialThemeBuilder: { nome: 'Material Theme Builder', icone: '/Material_Design_logo.svg' },
-  colormind: { nome: 'Colormind', icone: '' },
 } satisfies Record<string, { nome: string; icone: string }>;
 
 type Ferramenta = keyof typeof ferramentas;
@@ -27,26 +25,46 @@ type Ferramenta = keyof typeof ferramentas;
 interface Competencia {
   titulo: string;
   ferramentas: Ferramenta[];
-  descricao?: string;
-  /** Ocupa duas colunas no desktop (fecha a grade de 3 colunas em xadrez) */
-  largo?: boolean;
+  /** Texto de apoio pequeno, no rodapé do card */
+  nota?: string;
+  /** Projetos em que a competência foi usada (inclui projetos que ainda vão ganhar página) */
+  usadoEm?: string[] | 'todos';
 }
 
 // Edite aqui as competências e as ferramentas usadas em cada uma.
 const competencias: Competencia[] = [
-  { titulo: 'UX/UI Design', ferramentas: ['figma', 'figmaAi', 'figjam', 'miro'] },
-  { titulo: 'Pesquisa com usuários', ferramentas: ['googleForms', 'notion', 'trello', 'googleKeep', 'miro'] },
-  { titulo: 'Arquitetura da informação', ferramentas: ['figjam'] },
+  { titulo: 'UX/UI Design', ferramentas: ['figma', 'figmaAi', 'figjam', 'miro'], usadoEm: 'todos' },
+  {
+    titulo: 'Pesquisa com usuários',
+    ferramentas: ['googleForms', 'notion', 'trello', 'googleKeep', 'miro'],
+    usadoEm: ['BeReady', 'Fast Money', 'Wok Saudável'],
+  },
+  {
+    titulo: 'Arquitetura da informação',
+    ferramentas: ['figjam', 'miro'],
+    usadoEm: ['BeReady', 'Fast Money', 'Wok Saudável'],
+  },
   {
     titulo: 'IA aplicada à análise e síntese de insights',
-    descricao:
-      'Apoio à organização, interpretação e síntese de dados de pesquisa reais — nunca à geração de respostas de usuários.',
     ferramentas: ['chatgpt', 'gemini', 'claude'],
-    largo: true,
+    nota: 'Apoio à organização, interpretação e síntese de dados de pesquisa reais — nunca à geração de respostas de usuários.',
+    usadoEm: ['BeReady', 'Fast Money', 'Wok Saudável', 'Focus Clínica', 'SouJunior', 'Prothera', 'Passos de Luz'],
   },
-  { titulo: 'Wireframes e prototipação', ferramentas: ['figma', 'uizard'] },
-  { titulo: 'Design systems', ferramentas: ['materialThemeBuilder', 'colormind', 'figma'] },
-  { titulo: 'Testes de usabilidade', ferramentas: ['figma', 'googleForms'], largo: true },
+  {
+    titulo: 'Wireframes e prototipação',
+    ferramentas: ['figma'],
+    usadoEm: ['BeReady', 'Fast Money', 'Wok Saudável', 'Focus Clínica', 'SouJunior', 'Passos de Luz'],
+  },
+  {
+    titulo: 'Design systems',
+    ferramentas: ['materialThemeBuilder', 'figma'],
+    usadoEm: ['BeReady', 'Fast Money', 'Wok Saudável', 'Focus Clínica', 'SouJunior'],
+  },
+  {
+    titulo: 'Testes de usabilidade',
+    ferramentas: ['figma', 'googleForms'],
+    usadoEm: ['BeReady', 'Fast Money', 'Wok Saudável'],
+  },
 ];
 
 const iniciais = (nome: string) =>
@@ -88,8 +106,6 @@ function CardCompetencia({ c, numero, ativa, aoAtivar }: CardProps) {
   return (
     <li
       className={`group relative flex flex-col overflow-hidden rounded-3xl border bg-white p-6 transition duration-300 sm:p-7 ${
-        c.largo ? 'lg:col-span-2' : ''
-      } ${
         contem
           ? '-translate-y-1 border-roxo/40 shadow-[0_24px_50px_-30px_rgba(108,79,216,0.5)]'
           : 'border-nevoa hover:-translate-y-1 hover:border-roxo/30 hover:shadow-[0_24px_50px_-32px_rgba(18,59,90,0.45)]'
@@ -107,9 +123,6 @@ function CardCompetencia({ c, numero, ativa, aoAtivar }: CardProps) {
         {String(numero).padStart(2, '0')}
       </span>
       <h3 className="relative mt-4 text-[24px] leading-tight text-processo">{c.titulo}</h3>
-      {c.descricao && (
-        <p className="relative mt-3 max-w-xl text-[15px] leading-relaxed text-secundario">{c.descricao}</p>
-      )}
 
       <ul className="relative mt-auto flex flex-wrap gap-2 pt-6" aria-label={`Ferramentas de ${c.titulo}`}>
         {c.ferramentas.map((id) => {
@@ -138,6 +151,15 @@ function CardCompetencia({ c, numero, ativa, aoAtivar }: CardProps) {
           );
         })}
       </ul>
+
+      {c.nota && <p className="relative mt-4 text-[13px] leading-relaxed text-secundario">{c.nota}</p>}
+
+      {c.usadoEm && (
+        <p className="relative mt-5 border-t border-nevoa pt-4 text-[13px] leading-relaxed text-secundario">
+          <span className="mr-1.5 font-semibold uppercase tracking-[0.12em] text-roxo">Usado em</span>
+          {c.usadoEm === 'todos' ? 'Todos os projetos' : c.usadoEm.join(' · ')}
+        </p>
+      )}
     </li>
   );
 }
@@ -156,7 +178,7 @@ export function Ferramentas() {
           apoio="Uso de IA como apoio na obtenção de insights a partir de pesquisas e entrevistas."
         />
 
-        <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <ol className="mt-12 grid gap-5 md:auto-rows-fr md:grid-cols-2 lg:grid-cols-3">
           {competencias.map((c, i) => (
             <CardCompetencia key={c.titulo} c={c} numero={i + 1} ativa={ativa} aoAtivar={setAtiva} />
           ))}

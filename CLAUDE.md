@@ -43,7 +43,8 @@ Vamos conversar → Rodapé. Os textos de cada seção estão nos componentes em
 - **Projetos:** BeReady (nome provisório, vai mudar), Focus Clínica, Fast Money e Redesign de placas de ruas. Passos de Luz não entra na Home.
 - **Como trabalho:** fundo escuro, autoplay contínuo. O contorno do card ativo usa a mesma cor do número ativo. Pausa com hover
   (só mouse), foco por teclado ou toque. Sem botão de pausa (decisão dela). Não avança sozinho com movimento reduzido.
-- **Ferramentas:** 7 competências com logos das ferramentas (`public/*_logo.svg`). Hover/foco/toque numa ferramenta acende
-  todos os cards que a usam e apaga os demais. Pendente: linha "Usado em: <projetos>" em cada card (ela vai passar os dados).
+- **Ferramentas:** 7 competências, todos os cards do mesmo tamanho (sem esticar card para fechar a última fileira),
+  com logos (`public/*_logo.svg`) e rodapé "Usado em". Hover/foco/toque numa ferramenta acende os cards que a usam.
+  Projetos fora da Home (Wok Saudável, SouJunior, Prothera, Passos de Luz) terão página em "Ver todos os projetos".
 - **Contato:** LinkedIn e e-mail como botões outlined iguais, sem "Fale comigo". Dados em `src/conteudo.ts`.
 - Imagens em `public/` (WebP): capas 16:9, `sobre-mim-claudia-3x2`, `faixa-urubici-3x1`, `claudia-hero`.
