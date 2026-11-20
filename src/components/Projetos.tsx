@@ -97,7 +97,7 @@ function CardProjeto({ p }: { p: Projeto }) {
 export function Projetos() {
   return (
     <section id="projetos" aria-labelledby="titulo-projetos" className="bg-claro py-20 sm:py-28">
-      <div className="mx-auto max-w-[1280px] px-5 sm:px-8">
+      <div className="mx-auto max-w-pagina px-5 sm:px-8">
         <CabecalhoSecao
           id="titulo-projetos"
           rotulo="Projetos"

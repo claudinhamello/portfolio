@@ -8,6 +8,13 @@ export default {
         serif: ['"Instrument Serif"', 'serif'],
         sans: ['Manrope', 'system-ui', 'sans-serif'],
       },
+      maxWidth: {
+        // Largura do conteúdo: 1216px + 25% da sobra de cada lado da tela, até 1600px.
+        // Ex.: 1440px de tela → 1272px de conteúdo (margem 84px); 1920px → 1392px (margem 264px).
+        conteudo: 'min(1600px, calc(912px + 25vw))',
+        // O mesmo + o recuo lateral de 32px de cada lado (px-8), para os containers das seções
+        pagina: 'min(1664px, calc(976px + 25vw))',
+      },
       colors: {
         navy: '#0F2A4A',
         petroleo: '#14395F',

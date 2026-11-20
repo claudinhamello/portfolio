@@ -173,7 +173,7 @@ export function Ferramentas() {
 
   return (
     <section id="ferramentas" aria-labelledby="titulo-ferramentas" className="bg-claro py-20 sm:py-28">
-      <div className="mx-auto max-w-[1280px] px-5 sm:px-8">
+      <div className="mx-auto max-w-pagina px-5 sm:px-8">
         <CabecalhoSecao
           id="titulo-ferramentas"
           rotulo="Repertório · Processo · Ferramentas"

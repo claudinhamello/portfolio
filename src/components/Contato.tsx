@@ -39,7 +39,7 @@ export function Contato() {
         className="absolute inset-0 -z-10 hidden bg-[linear-gradient(90deg,rgba(11,34,64,0.42)_0%,rgba(11,34,64,0.2)_45%,transparent_70%)] md:block"
       />
 
-      <div className="mx-auto max-w-[1280px] px-5 sm:px-8">
+      <div className="mx-auto max-w-pagina px-5 sm:px-8">
         <div className="max-w-2xl">
           <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-gelo">Vamos conversar?</p>
           <h2 id="titulo-contato" className="mt-3 text-[40px] leading-[1.08] sm:text-[56px]">
@@ -70,7 +70,7 @@ export function Contato() {
       </div>
 
       {/* Legenda da foto, no rodapé da seção */}
-      <p className="absolute inset-x-0 bottom-0 mx-auto flex max-w-[1280px] items-center gap-2 px-5 pb-5 text-[12px] font-medium tracking-wide text-white/65 sm:justify-end sm:px-8">
+      <p className="absolute inset-x-0 bottom-0 mx-auto flex max-w-pagina items-center gap-2 px-5 pb-5 text-[12px] font-medium tracking-wide text-white/65 sm:justify-end sm:px-8">
         <Camera className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
         {legendaFoto}
       </p>

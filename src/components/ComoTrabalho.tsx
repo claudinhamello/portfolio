@@ -89,7 +89,7 @@ export function ComoTrabalho() {
         className="absolute inset-0 -z-10 bg-[radial-gradient(50%_60%_at_85%_0%,rgba(138,108,240,0.28),transparent_70%),radial-gradient(45%_55%_at_0%_100%,rgba(34,181,181,0.2),transparent_70%)]"
       />
 
-      <div className="mx-auto max-w-[1280px] px-5 sm:px-8">
+      <div className="mx-auto max-w-pagina px-5 sm:px-8">
         <CabecalhoSecao
             id="titulo-processo"
             escuro

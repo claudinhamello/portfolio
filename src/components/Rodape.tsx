@@ -4,7 +4,7 @@ import { contato, secoes } from '../conteudo';
 export function Rodape() {
   return (
     <footer className="bg-rodape text-white/80">
-      <div className="mx-auto flex max-w-[1280px] flex-col gap-10 px-5 py-14 sm:px-8 lg:flex-row lg:items-start lg:justify-between">
+      <div className="mx-auto flex max-w-pagina flex-col gap-10 px-5 py-14 sm:px-8 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <a href="#inicio" className="inline-flex items-center gap-3" aria-label="Claudia Mello — voltar ao início">
             <img src="/favicon.svg" alt="" width={40} height={40} className="h-10 w-10" />
@@ -55,7 +55,7 @@ export function Rodape() {
       </div>
 
       <div className="border-t border-white/10">
-        <p className="mx-auto max-w-[1280px] px-5 py-6 text-[13px] text-white/60 sm:px-8">
+        <p className="mx-auto max-w-pagina px-5 py-6 text-[13px] text-white/60 sm:px-8">
           © {new Date().getFullYear()} Claudia Mello.
         </p>
       </div>

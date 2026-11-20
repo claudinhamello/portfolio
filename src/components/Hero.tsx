@@ -88,19 +88,23 @@ export function Hero() {
     >
       <Fundo />
 
-      <div className="relative mx-auto flex min-h-[inherit] max-w-[1280px] flex-col px-5 sm:px-8 lg:flex-row lg:items-center">
+      <div className="relative mx-auto flex min-h-[inherit] max-w-pagina flex-col px-5 sm:px-8 lg:flex-row lg:items-center">
         {/* Texto */}
-        <div className="relative z-10 pb-10 pt-32 sm:pt-36 lg:w-[54%] lg:pb-20 lg:pt-28">
+        {/* A coluna é um container: no desktop o título se ajusta à largura dela (cqw) */}
+        <div className="relative z-10 pb-10 pt-32 sm:pt-36 lg:w-[54%] lg:pb-20 lg:pt-28 lg:[container-type:inline-size]">
           <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-teal sm:text-[13px]">
             Designer de Produto · UX · UI
           </p>
 
           <h1
             id="titulo-hero"
-            className="mt-5 font-serif text-[44px] leading-[1.04] tracking-[-0.01em] sm:text-[60px] lg:text-[64px] xl:text-[76px]"
+            className="mt-5 font-serif text-[44px] leading-[1.04] tracking-[-0.01em] sm:text-[60px] lg:text-[min(76px,9.4cqw)]"
           >
             <span className="block">Você vê o resultado.</span>
-            <span className="texto-gradiente italic">Eu mostro o caminho inteiro.</span>
+            {/* No desktop fica numa linha só. No celular e tablet pode quebrar, mas "caminho inteiro." fica junto */}
+            <span className="texto-gradiente italic lg:whitespace-nowrap">
+              Eu mostro o <span className="whitespace-nowrap">caminho inteiro.</span>
+            </span>
           </h1>
 
           <p className="mt-6 max-w-md text-lg text-white/85 sm:text-xl">

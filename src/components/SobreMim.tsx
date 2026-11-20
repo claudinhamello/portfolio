@@ -9,7 +9,7 @@ const valores = [
 export function SobreMim() {
   return (
     <section id="sobre" aria-labelledby="titulo-sobre" className="bg-white py-20 sm:py-28">
-      <div className="mx-auto max-w-[1280px] px-5 sm:px-8">
+      <div className="mx-auto max-w-pagina px-5 sm:px-8">
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
             <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-roxo">Sobre mim</p>

@@ -29,6 +29,7 @@ Objetivo: um portfólio "fora da caixa", que mostre processo e maturidade sem pa
 - Editorial, minimalista e tecnológica, com toque cinematográfico. Seções claras, gradientes pontuais, sem sombras pesadas
   nem enfeites sem função (ícones de banco, blobs).
 - **Instrument Serif** em todos os títulos e **Manrope** no resto. Nenhum texto de leitura abaixo de 14px nem tag abaixo de 12px.
+- Largura: sempre `max-w-pagina` (containers) / `max-w-conteudo` (cápsula do header). Crescem com a tela (25% da sobra lateral), mantendo header, títulos e foto alinhados.
 - Cores no `tailwind.config.js`. Gradiente de ação roxo → teal (`.btn-acao`), de destaque roxo → azul → teal (`.texto-gradiente`).
 - Logo: "C" de Claudia. Os cortes diagonais simbolizam construção. Ele se desenha uma vez ao carregar e respeita `prefers-reduced-motion`.
 
