@@ -17,6 +17,13 @@ export default {
         tinta: '#12304D',
         claro: '#F5F9FD',
         rodape: '#161F33',
+        // Seções claras (design system do Figma)
+        secundario: '#45647D',
+        nevoa: '#EAF1FA',
+        lilas: '#F0EDFF',
+        processo: '#123B5A',
+        // Roxo mais luminoso, para destaques sobre fundo escuro
+        ametista: '#8A6CF0',
       },
     },
   },

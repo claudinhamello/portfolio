@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Header, type SecaoAtiva } from './components/Header';
 import { Hero } from './components/Hero';
+import { Projetos } from './components/Projetos';
+import { SobreMim } from './components/SobreMim';
+import { ComoTrabalho } from './components/ComoTrabalho';
+import { Ferramentas } from './components/Ferramentas';
+import { Contato } from './components/Contato';
+import { Rodape } from './components/Rodape';
 
 export default function App() {
   const [secaoAtiva, setSecaoAtiva] = useState<SecaoAtiva>('inicio');
@@ -31,14 +37,13 @@ export default function App() {
       <Header secaoAtiva={secaoAtiva} />
       <main id="conteudo" tabIndex={-1} className="outline-none">
         <Hero />
-        {/* TEMPORÁRIA — seção alta e vazia só para testar o scroll. Remover depois. */}
-        <section aria-hidden="true" className="h-[200vh] bg-claro" />
-        {/* Âncoras das próximas seções — conteúdo ainda a construir */}
-        <section id="projetos" aria-label="Projetos" />
-        <section id="sobre" aria-label="Sobre mim" />
-        <section id="processo" aria-label="Como trabalho" />
-        <section id="contato" aria-label="Contato" />
+        <Projetos />
+        <SobreMim />
+        <ComoTrabalho />
+        <Ferramentas />
+        <Contato />
       </main>
+      <Rodape />
     </>
   );
 }
