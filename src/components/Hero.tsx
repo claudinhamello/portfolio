@@ -116,7 +116,7 @@ export function Hero() {
         </div>
 
         {/* Foto — sem nenhum tratamento na imagem; o corte e o esmaecimento são só de CSS */}
-        <div className="relative z-0 mx-auto mt-auto aspect-[9/10] w-[min(88%,440px)] self-center overflow-hidden [mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] lg:absolute lg:bottom-0 lg:right-8 lg:mt-0 lg:h-[85%] lg:w-auto lg:max-w-[48%] xl:right-4">
+        <div className="relative z-0 mx-auto mt-auto aspect-[9/10] w-[min(88%,440px)] self-center overflow-hidden [mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] lg:absolute lg:bottom-0 lg:right-8 lg:mt-0 lg:h-[85%] lg:w-auto lg:max-w-[48%]">
           <img
             src="/claudia-hero.webp"
             alt="Claudia Mello sorrindo, de óculos e blusa clara estampada em tons de verde e azul"

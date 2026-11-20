@@ -106,13 +106,13 @@ export function Header({ secaoAtiva }: HeaderProps) {
 
   return (
     <header
-      className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-3 text-white transition-[padding] duration-300 sm:px-6 ${
+      className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-5 text-white transition-[padding] duration-300 sm:px-8 ${
         rolou ? 'pt-2.5' : 'pt-4 sm:pt-5'
       }`}
     >
       {/* Cápsula flutuante em Liquid Glass */}
       <div
-        className={`vidro-liquido pointer-events-auto mx-auto flex max-w-[1120px] items-center justify-between rounded-full pl-6 pr-2.5 transition-[height] duration-300 sm:pl-8 ${
+        className={`vidro-liquido pointer-events-auto mx-auto flex max-w-[1216px] items-center justify-between rounded-full pl-6 pr-2.5 transition-[height] duration-300 sm:pl-8 ${
           rolou ? 'h-[58px]' : 'h-[72px]'
         }`}
       >
@@ -234,7 +234,7 @@ export function Header({ secaoAtiva }: HeaderProps) {
       {/* Painel — mobile */}
       <div
         id="menu-mobile"
-        className={`pointer-events-auto mx-auto mt-3 max-w-[1120px] md:hidden ${mobileAberto ? 'block' : 'hidden'}`}
+        className={`pointer-events-auto mx-auto mt-3 max-w-[1216px] md:hidden ${mobileAberto ? 'block' : 'hidden'}`}
       >
         <nav aria-label="Principal (celular)" className="vidro-liquido rounded-[28px] p-5">
           <ul className="flex flex-col gap-1">
