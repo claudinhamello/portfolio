@@ -1,5 +1,8 @@
-import { Linkedin, Mail } from 'lucide-react';
+import { Camera, Linkedin, Mail } from 'lucide-react';
 import { contato } from '../conteudo';
+
+// Legenda da foto de fundo (foto dela)
+const legendaFoto = 'Serra do Rio do Rastro, setembro de 2026 · foto minha';
 
 // Mesmo botão outlined para LinkedIn e e-mail
 const botaoContorno =
@@ -20,10 +23,20 @@ export function Contato() {
         height={639}
         className="absolute inset-0 -z-10 h-full w-full object-cover"
       />
-      {/* Véu navy, mais forte à esquerda, onde fica o texto */}
+      {/* Celular: véu azul-marinho, mais forte à esquerda (o texto ocupa a largura toda) */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(15,42,74,0.92)_0%,rgba(15,42,74,0.6)_55%,rgba(15,42,74,0.25)_100%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(15,42,74,0.92)_0%,rgba(15,42,74,0.6)_55%,rgba(15,42,74,0.25)_100%)] md:hidden"
+      />
+      {/* Tablet e desktop: desfoque atrás do texto, sumindo para a direita, onde a foto fica nítida */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 hidden backdrop-blur-[6px] [-webkit-mask-image:linear-gradient(90deg,#000_0%,#000_38%,transparent_72%)] [mask-image:linear-gradient(90deg,#000_0%,#000_38%,transparent_72%)] md:block"
+      />
+      {/* Sombra leve só atrás do texto, para o branco manter contraste sobre o céu */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 hidden bg-[linear-gradient(90deg,rgba(11,34,64,0.42)_0%,rgba(11,34,64,0.2)_45%,transparent_70%)] md:block"
       />
 
       <div className="mx-auto max-w-[1280px] px-5 sm:px-8">
@@ -55,6 +68,12 @@ export function Contato() {
           </div>
         </div>
       </div>
+
+      {/* Legenda da foto, no rodapé da seção */}
+      <p className="absolute inset-x-0 bottom-0 mx-auto flex max-w-[1280px] items-center gap-2 px-5 pb-5 text-[12px] font-medium tracking-wide text-white/65 sm:justify-end sm:px-8">
+        <Camera className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+        {legendaFoto}
+      </p>
     </section>
   );
 }
