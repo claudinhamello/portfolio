@@ -1,41 +1,38 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-        display: ['"Space Grotesk"', 'sans-serif'],
+        // Instrument Serif para TODOS os títulos serifados; Manrope para o resto.
+        serif: ['"Instrument Serif"', 'serif'],
+        sans: ['Manrope', 'system-ui', 'sans-serif'],
       },
-      animation: {
-        'marquee': 'marquee 25s linear infinite',
-        'pulse-glow': 'pulseGlow 8s ease-in-out infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'liquid-flow': 'liquidFlow 15s ease infinite',
+      maxWidth: {
+        // Largura do conteúdo: 1216px + 25% da sobra de cada lado da tela, até 1600px.
+        // Ex.: 1440px de tela → 1272px de conteúdo (margem 84px); 1920px → 1392px (margem 264px).
+        conteudo: 'min(1600px, calc(912px + 25vw))',
+        // O mesmo + o recuo lateral de 32px de cada lado (px-8), para os containers das seções
+        pagina: 'min(1664px, calc(976px + 25vw))',
       },
-      keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
-          '50%': { opacity: '0.9', transform: 'scale(1.05)' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        liquidFlow: {
-          '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
-          '50%': { borderRadius: '30% 60% 70% 30% / 50% 60% 30% 60%' },
-        }
+      colors: {
+        navy: '#0F2A4A',
+        petroleo: '#14395F',
+        roxo: '#6C4FD8',
+        teal: '#22B5B5',
+        gelo: '#A8F3F8',
+        tinta: '#12304D',
+        claro: '#F5F9FD',
+        rodape: '#161F33',
+        // Seções claras (design system do Figma)
+        secundario: '#45647D',
+        nevoa: '#EAF1FA',
+        lilas: '#F0EDFF',
+        processo: '#123B5A',
+        // Roxo mais luminoso, para destaques sobre fundo escuro
+        ametista: '#8A6CF0',
       },
     },
   },
   plugins: [],
-}
+};

@@ -1,156 +1,139 @@
-import React from 'react';
-import { ArrowRight, Sparkles, Figma } from 'lucide-react';
+// Edite aqui os itens do ticker da base do hero.
+export const itensTicker = [
+  'Pesquisa com usuários',
+  'Design system',
+  'Prototipação',
+  'Testes de usabilidade',
+  'Jornada do usuário',
+  'Handoff com devs',
+  'Escuta antes da tela',
+  'IA com critério',
+  'Figma',
+];
 
-interface HeroProps {
-  onOpenBastidores: () => void;
-  onOpenContact: () => void;
+function Fundo() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* Gradiente base: navy à esquerda → azul-petróleo */}
+      <div className="absolute inset-0 bg-[linear-gradient(115deg,#0B2240_0%,#0F2A4A_38%,#14395F_70%,#1A4A78_100%)]" />
+      {/* Brilho violeta atrás da foto */}
+      <div className="absolute right-[-8%] top-[8%] h-[85%] w-[65%] bg-[radial-gradient(closest-side,rgba(108,79,216,0.62),rgba(108,79,216,0.18)_55%,transparent)]" />
+      {/* Teal no canto inferior direito */}
+      <div className="absolute bottom-[-25%] right-[-15%] h-[70%] w-[60%] bg-[radial-gradient(closest-side,rgba(34,181,181,0.6),rgba(34,181,181,0.15)_60%,transparent)]" />
+      {/* Toque violeta no canto inferior esquerdo */}
+      <div className="absolute bottom-[-30%] left-[-20%] h-[60%] w-[50%] bg-[radial-gradient(closest-side,rgba(108,79,216,0.4),transparent)]" />
+
+      {/* Curvas translúcidas suaves */}
+      <svg
+        className="absolute inset-0 h-full w-full"
+        viewBox="0 0 1440 900"
+        preserveAspectRatio="xMidYMid slice"
+        fill="none"
+      >
+        <defs>
+          <linearGradient id="curva-a" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#A8F3F8" stopOpacity="0" />
+            <stop offset="0.5" stopColor="#A8F3F8" stopOpacity="0.07" />
+            <stop offset="1" stopColor="#22B5B5" stopOpacity="0.14" />
+          </linearGradient>
+          <linearGradient id="curva-b" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stopColor="#6C4FD8" stopOpacity="0.2" />
+            <stop offset="1" stopColor="#6C4FD8" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="curva-linha" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#ffffff" stopOpacity="0" />
+            <stop offset="0.5" stopColor="#ffffff" stopOpacity="0.14" />
+            <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path d="M520 0C700 210 980 260 1440 180V0Z" fill="url(#curva-a)" />
+        <path d="M0 900C260 640 560 560 860 640C1080 700 1250 820 1440 760V900Z" fill="url(#curva-b)" />
+        <path d="M940 900C1050 640 1240 480 1440 440V900Z" fill="url(#curva-a)" />
+        <path d="M-40 420C300 300 620 330 900 470S1300 640 1480 560" stroke="url(#curva-linha)" strokeWidth="1.2" />
+        <path d="M380 -20C560 180 860 250 1480 120" stroke="url(#curva-linha)" strokeWidth="1" />
+      </svg>
+    </div>
+  );
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenBastidores, onOpenContact }) => {
-  // Direct reference to your image file
-  const designerImage = "/claudia_hero.png";
-
-  const tickerItems = [
-    'PESQUISA',
-    'DESIGN SYSTEM',
-    'MATERIAL 3',
-    'HANDOFF COM DEVS',
-    'FIGMA',
-    'PESQUISA',
-    'PROTOTIPAGEM ALTA FIDELIDADE',
-    'ACCESSIBILIDADE WCAG AAA',
-    'MÉTRICAS DE UX',
-  ];
-
+function Ticker() {
   return (
-    <section id="home" className="relative min-h-screen pt-28 pb-12 md:pt-36 md:pb-16 flex flex-col justify-between bg-[#0b0c16]">
-      {/* Background True Radial Glows unbounded across the section */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div 
-          className="absolute top-[10%] right-[5%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(56,189,248,0.22) 0%, rgba(139,92,246,0.15) 50%, transparent 80%)',
-            filter: 'blur(90px)',
-          }}
-        />
-        <div 
-          className="absolute bottom-[20%] left-[-5%] w-[45vw] h-[45vw] max-w-[700px] max-h-[700px] rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(147,51,234,0.18) 0%, rgba(59,130,246,0.08) 50%, transparent 75%)',
-            filter: 'blur(100px)',
-          }}
-        />
+    <div className="ticker absolute inset-x-0 bottom-0 z-20 overflow-hidden py-5">
+      <p className="sr-only">Competências: {itensTicker.join(', ')}.</p>
+      <div className="ticker-trilho" aria-hidden="true">
+        {[0, 1].map((copia) => (
+          <ul key={copia} className="flex shrink-0 items-center">
+            {itensTicker.map((item) => (
+              <li
+                key={item}
+                className="flex items-center whitespace-nowrap text-[12px] font-semibold uppercase tracking-[0.2em] text-white/85 sm:text-[13px]"
+              >
+                <span className="px-4">{item}</span>
+                <span className="text-gelo/80">·</span>
+              </li>
+            ))}
+          </ul>
+        ))}
       </div>
+    </div>
+  );
+}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-20 w-full my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
-          
-          {/* Left Column: Text Content */}
-          <div className="lg:col-span-7 space-y-8 text-left z-20 pt-4">
-            
-            {/* Status Pill Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
-              </span>
-              <span className="text-xs font-medium text-slate-300 tracking-wider uppercase">
-                Disponível para Projetos & Liderança de UX
-              </span>
-            </div>
+export function Hero() {
+  return (
+    <section
+      id="inicio"
+      aria-labelledby="titulo-hero"
+      className="relative isolate min-h-[max(660px,min(100svh,900px))] overflow-hidden text-white"
+    >
+      <Fundo />
 
-            {/* Main Headline exact text from image */}
-            <div className="space-y-3">
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif tracking-tight text-white font-normal leading-[1.1]">
-                Você vê o resultado.
-              </h1>
-              <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif italic text-gradient-hero font-normal leading-[1.15]">
-                Eu mostro o caminho inteiro.
-              </h2>
-            </div>
+      <div className="relative mx-auto flex min-h-[inherit] max-w-pagina flex-col px-5 sm:px-8 lg:flex-row lg:items-center">
+        {/* Texto */}
+        {/* A coluna é um container: no desktop o título se ajusta à largura dela (cqw) */}
+        <div className="relative z-10 pb-10 pt-32 sm:pt-36 lg:w-[54%] lg:pb-20 lg:pt-28 lg:[container-type:inline-size]">
+          <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-teal sm:text-[13px]">
+            Designer de Produto · UX · UI
+          </p>
 
-            {/* Subtitle */}
-            <p className="text-lg sm:text-xl text-slate-300 max-w-xl font-light leading-relaxed">
-              Pesquisa, erros e iterações de cada projeto.
-            </p>
+          <h1
+            id="titulo-hero"
+            className="mt-5 font-serif text-[44px] leading-[1.04] tracking-[-0.01em] sm:text-[60px] lg:text-[min(76px,9.4cqw)]"
+          >
+            <span className="block">Você vê o resultado.</span>
+            {/* No desktop fica numa linha só. No celular e tablet pode quebrar, mas "caminho inteiro." fica junto */}
+            <span className="texto-gradiente italic lg:whitespace-nowrap">
+              Eu mostro o <span className="whitespace-nowrap">caminho inteiro.</span>
+            </span>
+          </h1>
 
-            {/* CTA Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <button
-                onClick={onOpenBastidores}
-                className="btn-liquid group inline-flex items-center gap-3 px-8 py-4 rounded-full text-base font-semibold text-white transition-all duration-300"
-              >
-                <span>Ver os bastidores</span>
-                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
-              </button>
+          <p className="mt-6 max-w-md text-lg text-white/85 sm:text-xl">
+            Pesquisa, erros e iterações de cada projeto.
+          </p>
 
-              <button
-                onClick={onOpenContact}
-                className="inline-flex items-center gap-2 px-6 py-4 rounded-full text-base font-medium text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition-all duration-300 backdrop-blur-sm"
-              >
-                <span>Agendar conversa</span>
-              </button>
-            </div>
+          <a href="#processo" className="btn-acao group mt-9 px-8 py-4 text-base">
+            Ver os bastidores
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </a>
+        </div>
 
-            {/* Quick Metrics Bar */}
-            <div className="pt-6 border-t border-white/10 grid grid-cols-3 gap-6 max-w-lg">
-              <div>
-                <p className="text-2xl sm:text-3xl font-display font-bold text-white">8+ anos</p>
-                <p className="text-xs text-slate-400 font-light mt-1">Design de Produto UX/UI</p>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-display font-bold text-cyan-400">42%</p>
-                <p className="text-xs text-slate-400 font-light mt-1">Aumento de Conversão</p>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-display font-bold text-purple-300">100%</p>
-                <p className="text-xs text-slate-400 font-light mt-1">Handoff Documentado</p>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right Column: Person standing DIRECTLY on the background */}
-          <div className="lg:col-span-5 relative flex justify-center lg:justify-end items-end h-full">
-            <div className="relative w-full max-w-[480px] flex items-end justify-center">
-
-              {/* Backlight Glow directly behind her silhouette */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400/20 via-purple-500/15 to-transparent rounded-full blur-3xl transform scale-110 pointer-events-none" />
-
-              {/* Portrait Image without alpha fade */}
-              <div className="relative w-full flex justify-center min-h-[480px]">
-                <img
-                  src={designerImage}
-                  alt="Claudia Mello — Product Designer"
-                  className="w-full max-h-[620px] object-cover object-top select-none pointer-events-none filter drop-shadow-[0_20px_50px_rgba(56,189,248,0.2)]"
-                />
-              </div>
-
-              {/* Minimalist Floating Pill Badge */}
-              <div className="absolute top-4 right-0 z-30 liquid-glass rounded-full px-4 py-1.5 border border-white/20 backdrop-blur-md flex items-center gap-2 shadow-xl animate-float">
-                <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#38bdf8]" />
-                <span className="text-xs text-white font-medium">Claudia Mello • Product/UI/UX Designer</span>
-              </div>
-
-            </div>
-          </div>
-
+        {/* Foto — sem nenhum tratamento na imagem; o corte e o esmaecimento são só de CSS */}
+        <div className="relative z-0 mx-auto mt-auto aspect-[9/10] w-[min(88%,440px)] self-center overflow-hidden [mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] lg:absolute lg:bottom-0 lg:right-8 lg:mt-0 lg:h-[85%] lg:w-auto lg:max-w-[48%]">
+          <img
+            src="/claudia-hero.webp"
+            alt="Claudia Mello sorrindo, de óculos e blusa clara estampada em tons de verde e azul"
+            width={900}
+            height={1598}
+            {...{ fetchpriority: 'high' }}
+            className="h-full w-full select-none object-cover object-top"
+            draggable={false}
+          />
         </div>
       </div>
 
-      {/* Ticker / Marquee Banner at Hero Bottom */}
-      <div className="relative w-full overflow-hidden border-y border-white/10 bg-white/[0.02] backdrop-blur-md py-4 mt-8 z-20">
-        <div className="flex whitespace-nowrap animate-marquee">
-          {[...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
-            <div key={idx} className="flex items-center gap-6 mx-4">
-              <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-300 uppercase font-sans">
-                {item}
-              </span>
-              <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#38bdf8]" />
-            </div>
-          ))}
-        </div>
-      </div>
+      <Ticker />
     </section>
   );
-};
+}
