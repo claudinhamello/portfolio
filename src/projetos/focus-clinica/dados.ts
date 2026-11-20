@@ -197,7 +197,7 @@ export const aprendizados = {
   divergencia: {
     rotulo: 'Na prática',
     texto:
-      'Eu preferia o tema claro, que representa melhor uma clínica; parte do grupo preferia uma proposta mais voltada ao tema escuro. Apresentei meus motivos, ouvi os argumentos de cada um e, juntos, concluímos que o tema claro era o melhor para o SaaS.',
+      'Eu queria um hero com cor escura, para causar mais impacto. Um dos desenvolvedores ponderou que, por ser a página de uma clínica, um tema claro combinaria mais com a imagem de saúde. Concordei, e o hero ficou claro.',
   },
   tecnicos: [
     'Transformar um briefing em uma experiência digital estruturada',
