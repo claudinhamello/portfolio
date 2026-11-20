@@ -1,30 +1,19 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { LogoAnimado } from './LogoAnimado';
-
-export type SecaoAtiva = 'inicio' | 'projetos' | 'sobre' | 'processo' | 'ferramentas' | 'contato' | null;
-
-// Seções da Home que entram no menu depois de "Projetos" (o contato fica no botão "Vamos conversar")
-const secoesMenu = [
-  { id: 'sobre', rotulo: 'Sobre mim' },
-  { id: 'processo', rotulo: 'Como trabalho' },
-  { id: 'ferramentas', rotulo: 'Ferramentas' },
-] as const;
-
-// Itens do submenu "Projetos". Troque os href quando as páginas de cada projeto existirem.
-export const projetosMenu = [
-  { rotulo: 'BeReady', href: '#projetos' },
-  { rotulo: 'Focus Clínica', href: '#projetos' },
-  { rotulo: 'Fast Money', href: '#projetos' },
-  { rotulo: 'Redesign de placas de ruas', href: '#projetos' },
-];
-const verTodos = { rotulo: 'Ver todos os projetos', href: '#projetos' };
+import { Ancora } from './Ancora';
+import { projetosMenu, verTodosProjetos, type ItemMenu } from '../conteudo';
 
 interface HeaderProps {
-  secaoAtiva: SecaoAtiva;
+  /** id da seção visível no momento (para o traço do item ativo) */
+  secaoAtiva: string | null;
+  /** "Início": na Home rola até o topo; nas outras páginas volta para a Home */
+  inicio: ItemMenu;
+  /** Seções da página atual que entram no menu depois de "Projetos" (o contato fica no botão "Vamos conversar") */
+  secoes: ItemMenu[];
 }
 
-export function Header({ secaoAtiva }: HeaderProps) {
+export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
   const [rolou, setRolou] = useState(false);
   const [submenuAberto, setSubmenuAberto] = useState(false);
   const [mobileAberto, setMobileAberto] = useState(false);
@@ -125,8 +114,8 @@ export function Header({ secaoAtiva }: HeaderProps) {
       >
         <span className="vidro-halo" aria-hidden="true" />
         {/* Logo */}
-        <a
-          href="#inicio"
+        <Ancora
+          href={inicio.href}
           onClick={fecharTudo}
           className="flex items-center"
           aria-label="Claudia Mello — voltar ao início"
@@ -144,19 +133,19 @@ export function Header({ secaoAtiva }: HeaderProps) {
             <span>Claudia</span>
             <span>Mello</span>
           </span>
-        </a>
+        </Ancora>
 
         {/* Navegação — desktop */}
         <nav aria-label="Principal" className="hidden lg:block">
           <ul className="flex items-center gap-8 xl:gap-10">
             <li>
-              <a
-                href="#inicio"
+              <Ancora
+                href={inicio.href}
                 className="nav-link"
-                aria-current={secaoAtiva === 'inicio' ? 'true' : undefined}
+                aria-current={secaoAtiva === inicio.id ? 'true' : undefined}
               >
                 Início
-              </a>
+              </Ancora>
             </li>
             <li
               className="relative"
@@ -195,36 +184,36 @@ export function Header({ secaoAtiva }: HeaderProps) {
                 >
                   {projetosMenu.map((p) => (
                     <li key={p.rotulo}>
-                      <a
+                      <Ancora
                         href={p.href}
                         onClick={fecharTudo}
                         className="block rounded-xl px-4 py-2.5 text-sm text-white/85 transition-colors hover:bg-white/10 hover:text-white focus-visible:bg-white/10"
                       >
                         {p.rotulo}
-                      </a>
+                      </Ancora>
                     </li>
                   ))}
                   <li className="mt-1 border-t border-white/15 pt-1">
-                    <a
-                      href={verTodos.href}
+                    <Ancora
+                      href={verTodosProjetos.href}
                       onClick={fecharTudo}
                       className="block rounded-xl px-4 py-2.5 text-sm font-semibold text-gelo transition-colors hover:bg-white/10 focus-visible:bg-white/10"
                     >
-                      {verTodos.rotulo} →
-                    </a>
+                      {verTodosProjetos.rotulo} →
+                    </Ancora>
                   </li>
                 </ul>
               </div>
             </li>
-            {secoesMenu.map((s) => (
+            {secoes.map((s) => (
               <li key={s.id}>
-                <a
-                  href={`#${s.id}`}
+                <Ancora
+                  href={s.href}
                   className="nav-link"
                   aria-current={secaoAtiva === s.id ? 'true' : undefined}
                 >
                   {s.rotulo}
-                </a>
+                </Ancora>
               </li>
             ))}
           </ul>
@@ -257,41 +246,41 @@ export function Header({ secaoAtiva }: HeaderProps) {
         <nav aria-label="Principal (celular)" className="vidro-liquido rounded-[28px] p-5">
           <ul className="flex flex-col gap-1">
             <li>
-              <a
-                href="#inicio"
+              <Ancora
+                href={inicio.href}
                 onClick={fecharTudo}
                 className="nav-link py-2 text-lg"
-                aria-current={secaoAtiva === 'inicio' ? 'true' : undefined}
+                aria-current={secaoAtiva === inicio.id ? 'true' : undefined}
               >
                 Início
-              </a>
+              </Ancora>
             </li>
             <li className="pt-3">
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">Projetos</span>
               <ul className="mt-2 flex flex-col">
-                {[...projetosMenu, verTodos].map((p) => (
+                {[...projetosMenu, verTodosProjetos].map((p) => (
                   <li key={p.rotulo}>
-                    <a
+                    <Ancora
                       href={p.href}
                       onClick={fecharTudo}
                       className="block rounded-lg py-2 text-base text-white/85 hover:text-white"
                     >
                       {p.rotulo}
-                    </a>
+                    </Ancora>
                   </li>
                 ))}
               </ul>
             </li>
-            {secoesMenu.map((s) => (
-              <li key={s.id} className={s.id === 'sobre' ? 'pt-3' : undefined}>
-                <a
-                  href={`#${s.id}`}
+            {secoes.map((s) => (
+              <li key={s.id} className={s === secoes[0] ? 'pt-3' : undefined}>
+                <Ancora
+                  href={s.href}
                   onClick={fecharTudo}
                   className="nav-link py-2 text-lg"
                   aria-current={secaoAtiva === s.id ? 'true' : undefined}
                 >
                   {s.rotulo}
-                </a>
+                </Ancora>
               </li>
             ))}
           </ul>

@@ -16,7 +16,7 @@ export function Contato() {
       className="relative isolate overflow-hidden bg-navy py-24 text-white sm:py-32"
     >
       <img
-        src="/faixa-urubici-3x1.webp"
+        src="/comum/faixa-urubici-3x1.webp"
         alt=""
         loading="lazy"
         width={1920}

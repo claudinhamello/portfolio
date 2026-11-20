@@ -3,22 +3,22 @@ import { CabecalhoSecao } from './CabecalhoSecao';
 
 /**
  * Ferramentas. Para colocar o ícone de uma ferramenta, salve o arquivo em /public
- * e preencha `icone` (ex.: icone: '/Figma_logo.svg'). Sem ícone, aparece um placeholder com as iniciais.
+ * e preencha `icone` (ex.: icone: '/comum/logos/Figma_logo.svg'). Sem ícone, aparece um placeholder com as iniciais.
  */
 const ferramentas = {
-  figma: { nome: 'Figma', icone: '/Figma_logo.svg' },
-  figmaAi: { nome: 'Figma AI', icone: '/Figma_logo.svg' },
-  figjam: { nome: 'FigJam', icone: '/Figma_logo.svg' },
-  miro: { nome: 'Miro', icone: '/Miro_logo.svg' },
-  googleForms: { nome: 'Google Forms', icone: '/Google_Forms_logo.svg' },
-  notion: { nome: 'Notion', icone: '/Notion_logo.svg' },
-  trello: { nome: 'Trello', icone: '/Trello_logo.svg' },
-  googleKeep: { nome: 'Google Keep', icone: '/Google_Keep_logo.svg' },
-  chatgpt: { nome: 'ChatGPT', icone: '/ChatGPT_logo.svg' },
-  gemini: { nome: 'Gemini', icone: '/Gemini_logo.svg' },
-  claude: { nome: 'Claude', icone: '/Claude_logo.svg' },
-  materialThemeBuilder: { nome: 'Material Theme Builder', icone: '/Material_Design_logo.svg' },
-  material3: { nome: 'Material Design 3', icone: '/Material_Design_logo.svg' },
+  figma: { nome: 'Figma', icone: '/comum/logos/Figma_logo.svg' },
+  figmaAi: { nome: 'Figma AI', icone: '/comum/logos/Figma_logo.svg' },
+  figjam: { nome: 'FigJam', icone: '/comum/logos/Figma_logo.svg' },
+  miro: { nome: 'Miro', icone: '/comum/logos/Miro_logo.svg' },
+  googleForms: { nome: 'Google Forms', icone: '/comum/logos/Google_Forms_logo.svg' },
+  notion: { nome: 'Notion', icone: '/comum/logos/Notion_logo.svg' },
+  trello: { nome: 'Trello', icone: '/comum/logos/Trello_logo.svg' },
+  googleKeep: { nome: 'Google Keep', icone: '/comum/logos/Google_Keep_logo.svg' },
+  chatgpt: { nome: 'ChatGPT', icone: '/comum/logos/ChatGPT_logo.svg' },
+  gemini: { nome: 'Gemini', icone: '/comum/logos/Gemini_logo.svg' },
+  claude: { nome: 'Claude', icone: '/comum/logos/Claude_logo.svg' },
+  materialThemeBuilder: { nome: 'Material Theme Builder', icone: '/comum/logos/Material_Design_logo.svg' },
+  material3: { nome: 'Material Design 3', icone: '/comum/logos/Material_Design_logo.svg' },
 } satisfies Record<string, { nome: string; icone: string }>;
 
 type Ferramenta = keyof typeof ferramentas;

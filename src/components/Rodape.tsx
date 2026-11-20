@@ -1,13 +1,20 @@
 import { ArrowUp, Linkedin, Mail } from 'lucide-react';
-import { contato, secoes } from '../conteudo';
+import { contato, type ItemMenu } from '../conteudo';
+import { Ancora } from './Ancora';
 
-export function Rodape() {
+interface Props {
+  /** Links da página atual (as seções e o contato) */
+  secoes: Pick<ItemMenu, 'rotulo' | 'href'>[];
+}
+
+// O topo de toda página é a seção #inicio
+export function Rodape({ secoes }: Props) {
   return (
     <footer className="bg-rodape text-white/80">
       <div className="mx-auto flex max-w-pagina flex-col gap-10 px-5 py-14 sm:px-8 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <a href="#inicio" className="inline-flex items-center gap-3" aria-label="Claudia Mello — voltar ao início">
-            <img src="/favicon.svg" alt="" width={40} height={40} className="h-10 w-10" />
+            <img src="/comum/favicon.svg" alt="" width={40} height={40} className="h-10 w-10" />
             <span className="font-serif text-2xl text-white">Claudia Mello</span>
           </a>
           <p className="mt-3 text-[14px]">Product Designer | UX/UI Designer</p>
@@ -17,9 +24,9 @@ export function Rodape() {
           <ul className="grid grid-cols-2 gap-x-10 gap-y-3 text-[15px] sm:grid-cols-3">
             {secoes.map((s) => (
               <li key={s.href}>
-                <a href={s.href} className="transition-colors hover:text-white">
+                <Ancora href={s.href} className="transition-colors hover:text-white">
                   {s.rotulo}
-                </a>
+                </Ancora>
               </li>
             ))}
           </ul>

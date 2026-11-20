@@ -26,7 +26,7 @@ export function SobreMim() {
           </div>
 
           <img
-            src="/sobre-mim-claudia-3x2.webp"
+            src="/home/sobre-mim-claudia-3x2.webp"
             alt="Wireframes à mão e cards de pesquisa do BeReady."
             loading="lazy"
             width={1551}
