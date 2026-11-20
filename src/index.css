@@ -239,6 +239,24 @@
     inset -1px 0 0 rgba(0, 0, 0, 0.25),
     0 30px 60px -22px rgba(0, 0, 0, 0.55);
 }
+/* Na frente do celular 3D a sombra vai para o chão; ficam só os filetes de luz da borda */
+.aco-escovado--sem-sombra {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+    inset 1px 0 0 rgba(255, 255, 255, 0.35),
+    inset -1px 0 0 rgba(0, 0, 0, 0.25);
+}
+/* Camadas da espessura (lateral) do celular 3D: aço com reflexos na vertical */
+.aco-lateral {
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 3px),
+    linear-gradient(180deg, #6b727a 0%, #c8cdd2 14%, #8c939a 38%, #e3e6e9 62%, #9aa1a8 82%, #6a7178 100%);
+}
+.aco-traseira {
+  background: #3d4248;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.4);
+}
 .aco-botao {
   background: linear-gradient(180deg, #e9ecef 0%, #8d949b 50%, #d3d8dc 100%);
   box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.35);

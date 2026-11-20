@@ -15,8 +15,19 @@ export const hero = {
   texto:
     'O BeReady ajuda famílias a montar, organizar e manter mochilas de emergência: o que falta, o que vence e quando agir, sem complicação e sem desperdício.',
   status: 'Em desenvolvimento · alta fidelidade em andamento',
-  imagem: `${pasta}/hero-inicio.webp`,
-  altura: 852,
+  // Dois celulares inclinados: o de trás (início) e o da frente (notificações)
+  telas: [
+    {
+      imagem: `${pasta}/hero-inicio.webp`,
+      altura: 852,
+      alt: 'Tela inicial do BeReady: mochila em ordem, próxima revisão sugerida e dica do dia',
+    },
+    {
+      imagem: `${pasta}/hero-notificacoes.webp`,
+      altura: 800,
+      alt: 'Tela de configurações do BeReady: notificações ativadas com aviso 30 dias antes do vencimento e dia de compras',
+    },
+  ],
 };
 
 export const ficha = [

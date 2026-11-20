@@ -1,6 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { CabecalhoCase } from '../CabecalhoCase';
-import { Celular } from '../Celular';
+import { Celular3D } from '../Celular';
 import { ImagemComReserva } from '../../components/ImagemComReserva';
 import { designSystem, equipe, ficha, hero, links, pesquisa, problema, proximosPassos } from './dados';
 
@@ -40,15 +40,25 @@ export function HeroBeReady() {
           </div>
         </div>
 
-        <div className="flex justify-center lg:justify-end">
-          <div className="w-[min(72vw,300px)] drop-shadow-[0_30px_50px_rgba(18,59,90,0.18)]">
-            <Celular
-              src={hero.imagem}
-              altura={hero.altura}
-              alt="Tela inicial do BeReady: mochila em ordem, próxima revisão sugerida e dica do dia"
-              prioridade
-            />
-          </div>
+        {/* Dois celulares em 3D, virados um para o outro: o da esquerda é o da direita espelhado.
+            Evitar rotação y positiva: no navegador da Claudia ela cortava a tela do celular. */}
+        <div className="relative mx-auto aspect-[1/1.1] w-full max-w-[460px] lg:mr-0">
+          <Celular3D
+            src={hero.telas[0].imagem}
+            altura={hero.telas[0].altura}
+            alt={hero.telas[0].alt}
+            prioridade
+            espelhado
+            className="absolute left-[6%] top-0 w-[42%]"
+          />
+          <Celular3D
+            src={hero.telas[1].imagem}
+            altura={hero.telas[1].altura}
+            alt={hero.telas[1].alt}
+            prioridade
+            rotacao={{ x: -6, y: -26, z: 5 }}
+            className="absolute bottom-0 right-[12%] w-[42%]"
+          />
         </div>
       </div>
     </section>
