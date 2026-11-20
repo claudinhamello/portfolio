@@ -105,12 +105,18 @@ export function Header({ secaoAtiva }: HeaderProps) {
   };
 
   return (
-    <header className="header-vidro fixed inset-x-0 top-0 z-50 text-white">
+    <header
+      className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-3 text-white transition-[padding] duration-300 sm:px-6 ${
+        rolou ? 'pt-2.5' : 'pt-4 sm:pt-5'
+      }`}
+    >
+      {/* Cápsula flutuante em Liquid Glass */}
       <div
-        className={`mx-auto flex max-w-[1280px] items-center justify-between px-5 transition-[height] duration-300 sm:px-8 ${
-          rolou ? 'h-16' : 'h-[88px]'
+        className={`vidro-liquido pointer-events-auto mx-auto flex max-w-[1120px] items-center justify-between rounded-full pl-6 pr-2.5 transition-[height] duration-300 sm:pl-8 ${
+          rolou ? 'h-[58px]' : 'h-[72px]'
         }`}
       >
+        <span className="vidro-halo" aria-hidden="true" />
         {/* Logo */}
         <a
           href="#inicio"
@@ -119,12 +125,12 @@ export function Header({ secaoAtiva }: HeaderProps) {
           aria-label="Claudia Mello — voltar ao início"
         >
           <LogoAnimado
-            className={`transition-all duration-300 ${rolou ? 'h-8 w-[43px]' : 'h-10 w-[54px]'}`}
+            className={`transition-all duration-300 ${rolou ? 'h-7 w-[38px]' : 'h-8 w-[43px]'}`}
           />
           <span
             aria-hidden="true"
-            className={`overflow-hidden whitespace-nowrap font-serif text-[15px] leading-none tracking-wide text-white/90 transition-all duration-300 ${
-              rolou ? 'mt-0 max-h-0 opacity-0' : 'mt-1.5 max-h-5 opacity-100'
+            className={`overflow-hidden whitespace-nowrap font-serif text-[14px] leading-none tracking-wide text-white/90 transition-all duration-300 ${
+              rolou ? 'mt-0 max-h-0 opacity-0' : 'mt-1 max-h-5 opacity-100'
             }`}
           >
             Claudia Mello
@@ -176,7 +182,7 @@ export function Header({ secaoAtiva }: HeaderProps) {
                   id="submenu-projetos"
                   ref={submenuRef}
                   onKeyDown={aoTeclarSubmenu}
-                  className="painel-vidro w-64 rounded-2xl p-2 shadow-2xl shadow-black/30"
+                  className="vidro-liquido w-64 rounded-[22px] p-2"
                 >
                   {projetosMenu.map((p) => (
                     <li key={p.rotulo}>
@@ -213,7 +219,7 @@ export function Header({ secaoAtiva }: HeaderProps) {
         <button
           ref={botaoMobileRef}
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/5 md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] md:hidden"
           aria-expanded={mobileAberto}
           aria-controls="menu-mobile"
           aria-label={mobileAberto ? 'Fechar menu' : 'Abrir menu'}
@@ -224,8 +230,11 @@ export function Header({ secaoAtiva }: HeaderProps) {
       </div>
 
       {/* Painel — mobile */}
-      <div id="menu-mobile" className={`px-4 pb-4 md:hidden ${mobileAberto ? 'block' : 'hidden'}`}>
-        <nav aria-label="Principal (celular)" className="painel-vidro rounded-2xl p-5">
+      <div
+        id="menu-mobile"
+        className={`pointer-events-auto mx-auto mt-3 max-w-[1120px] md:hidden ${mobileAberto ? 'block' : 'hidden'}`}
+      >
+        <nav aria-label="Principal (celular)" className="vidro-liquido rounded-[28px] p-5">
           <ul className="flex flex-col gap-1">
             <li>
               <a
