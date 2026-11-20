@@ -140,25 +140,6 @@ export const decisoes = {
     { titulo: 'Chamadas para ação', texto: 'Organização dos convites para conhecer a plataforma.' },
     { titulo: 'Responsividade', texto: 'Adaptação do conteúdo para desktop, tablet e mobile.' },
   ],
-  apresentacao: {
-    rotulo: 'Como apresentei no Figma',
-    titulo: 'As três versões lado a lado, sem depender de um protótipo.',
-    texto:
-      'Com um prazo de 14 dias, escolhi concentrar o tempo nas interfaces em vez de um protótipo navegável. Organizei desktop, tablet e mobile em frames verticais completos, lado a lado, para comparar as adaptações de layout e ver a experiência inteira sem depender de interações, e sem que a avaliação dependesse de um protótipo funcionando bem ao abrir.',
-  },
-  paleta: {
-    rotulo: 'Paleta · tema claro e tema escuro',
-    imagens: [
-      {
-        imagem: `${pasta}/paleta-light.webp`,
-        alt: 'Paleta da Focus Clínica no tema claro: primária #1B6B51, secundária #4C6359, terciária #3E6374, erro #BA1A1A e cores de superfície',
-      },
-      {
-        imagem: `${pasta}/paleta-dark.webp`,
-        alt: 'Paleta da Focus Clínica no tema escuro: primária #8BD6B6, secundária #B3CCBF, terciária #A6CCDE, erro #FFB4AB e cores de superfície',
-      },
-    ],
-  },
 };
 
 export const colaboracao = {

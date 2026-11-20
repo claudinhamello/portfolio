@@ -20,6 +20,18 @@ import {
 const container = 'mx-auto max-w-pagina px-5 sm:px-8';
 const card = 'rounded-3xl border border-nevoa bg-white';
 
+// Card com reação no hover: sobe, borda e sombra no verde do projeto e um brilho suave vindo de cima
+const cardInterativo = `${card} group relative isolate overflow-hidden transition duration-300 hover:-translate-y-1 hover:border-acento/40 hover:shadow-[0_24px_50px_-28px_rgb(var(--acento)/0.45)]`;
+
+function BrilhoHover() {
+  return (
+    <span
+      aria-hidden="true"
+      className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(var(--acento)/0.08)_0%,transparent_60%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+    />
+  );
+}
+
 function BotaoExterno({ href, children, contorno = false }: { href: string; children: string; contorno?: boolean }) {
   return (
     <a
@@ -43,7 +55,8 @@ export function HeroFocus() {
     <section
       id="inicio"
       aria-labelledby="titulo-focus"
-      className="relative isolate overflow-hidden bg-claro pb-16 pt-32 sm:pt-40"
+      // Sem overflow-hidden e com espaço embaixo: a sombra da janela (~80px) não pode ser cortada
+      className="relative isolate z-10 bg-claro pb-28 pt-32 sm:pt-40"
     >
       {/* Brilho verde suave atrás do conteúdo */}
       <div
@@ -153,8 +166,11 @@ export function Atuacao() {
         <CabecalhoCase id="titulo-atuacao" rotulo={atuacao.rotulo} titulo={atuacao.titulo} texto={atuacao.texto} />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {atuacao.grupos.map((g) => (
-            <div key={g.titulo} className={`${card} p-7`}>
-              <h3 className="font-sans text-[18px] font-semibold text-processo">{g.titulo}</h3>
+            <div key={g.titulo} className={`${cardInterativo} p-7`}>
+              <BrilhoHover />
+              <h3 className="font-sans text-[18px] font-semibold text-processo transition-colors group-hover:text-acento">
+                {g.titulo}
+              </h3>
               <ul className="mt-5 space-y-3">
                 {g.itens.map((i) => (
                   <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-secundario">
@@ -203,15 +219,17 @@ export function Solucao() {
 }
 
 export function Decisoes() {
-  const { apresentacao, paleta } = decisoes;
   return (
     <section id="decisoes" aria-labelledby="titulo-decisoes" className="bg-white py-20 sm:py-28">
       <div className={container}>
         <CabecalhoCase id="titulo-decisoes" rotulo={decisoes.rotulo} titulo={decisoes.titulo} texto={decisoes.texto} />
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {decisoes.aspectos.map((a) => (
-            <li key={a.titulo} className={`${card} p-6`}>
-              <h3 className="font-sans text-[17px] font-semibold text-processo">{a.titulo}</h3>
+            <li key={a.titulo} className={`${cardInterativo} p-6`}>
+              <BrilhoHover />
+              <h3 className="font-sans text-[17px] font-semibold text-processo transition-colors group-hover:text-acento">
+                {a.titulo}
+              </h3>
               <p className="mt-2 text-[15px] leading-relaxed text-secundario">{a.texto}</p>
             </li>
           ))}
