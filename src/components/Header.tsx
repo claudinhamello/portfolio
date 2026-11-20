@@ -121,19 +121,21 @@ export function Header({ secaoAtiva }: HeaderProps) {
         <a
           href="#inicio"
           onClick={fecharTudo}
-          className="flex flex-col items-start"
+          className="flex items-center"
           aria-label="Claudia Mello — voltar ao início"
         >
           <LogoAnimado
-            className={`transition-all duration-300 ${rolou ? 'h-7 w-[38px]' : 'h-8 w-[43px]'}`}
+            className={`shrink-0 transition-all duration-300 ${rolou ? 'h-7 w-[38px]' : 'h-8 w-[43px]'}`}
           />
+          {/* Nome em duas linhas, com a mesma altura do logo (32px); some ao rolar */}
           <span
             aria-hidden="true"
-            className={`overflow-hidden whitespace-nowrap font-serif text-[14px] leading-none tracking-wide text-white/90 transition-all duration-300 ${
-              rolou ? 'mt-0 max-h-0 opacity-0' : 'mt-1 max-h-5 opacity-100'
+            className={`flex h-8 flex-col justify-center overflow-hidden whitespace-nowrap font-serif text-[17px] leading-4 tracking-wide text-white/90 transition-all duration-300 ${
+              rolou ? 'ml-0 max-w-0 opacity-0' : 'ml-2.5 max-w-[96px] opacity-100'
             }`}
           >
-            Claudia Mello
+            <span>Claudia</span>
+            <span>Mello</span>
           </span>
         </a>
 

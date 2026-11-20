@@ -31,6 +31,8 @@ export default function App() {
       <Header secaoAtiva={secaoAtiva} />
       <main id="conteudo" tabIndex={-1} className="outline-none">
         <Hero />
+        {/* TEMPORÁRIA — seção alta e vazia só para testar o scroll. Remover depois. */}
+        <section aria-hidden="true" className="h-[200vh] bg-claro" />
         {/* Âncoras das próximas seções — conteúdo ainda a construir */}
         <section id="projetos" aria-label="Projetos" />
         <section id="sobre" aria-label="Sobre mim" />
