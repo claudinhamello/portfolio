@@ -18,6 +18,7 @@ const ferramentas = {
   gemini: { nome: 'Gemini', icone: '/Gemini_logo.svg' },
   claude: { nome: 'Claude', icone: '/Claude_logo.svg' },
   materialThemeBuilder: { nome: 'Material Theme Builder', icone: '/Material_Design_logo.svg' },
+  material3: { nome: 'Material Design 3', icone: '/Material_Design_logo.svg' },
 } satisfies Record<string, { nome: string; icone: string }>;
 
 type Ferramenta = keyof typeof ferramentas;
@@ -33,7 +34,11 @@ interface Competencia {
 
 // Edite aqui as competências e as ferramentas usadas em cada uma.
 const competencias: Competencia[] = [
-  { titulo: 'UX/UI Design', ferramentas: ['figma', 'figmaAi', 'figjam', 'miro'], usadoEm: 'todos' },
+  {
+    titulo: 'UX/UI Design',
+    ferramentas: ['figma', 'figmaAi', 'figjam', 'miro', 'materialThemeBuilder'],
+    usadoEm: 'todos'
+  },
   {
     titulo: 'Pesquisa com usuários',
     ferramentas: ['googleForms', 'notion', 'trello', 'googleKeep', 'miro'],
@@ -57,7 +62,7 @@ const competencias: Competencia[] = [
   },
   {
     titulo: 'Design systems',
-    ferramentas: ['materialThemeBuilder', 'figma'],
+    ferramentas: ['material3', 'figma'],
     usadoEm: ['BeReady', 'Fast Money', 'Wok Saudável', 'Focus Clínica', 'SouJunior'],
   },
   {
@@ -173,7 +178,7 @@ export function Ferramentas() {
           id="titulo-ferramentas"
           rotulo="Repertório · Processo · Ferramentas"
           titulo="Ferramentas e competências"
-          apoio="Uso de IA como apoio na obtenção de insights a partir de pesquisas e entrevistas."
+          apoio="O que sei fazer, com quais ferramentas e em quais projetos isso já aconteceu."
         />
 
         <ol className="mt-12 grid gap-5 md:auto-rows-fr md:grid-cols-2 lg:grid-cols-3">
