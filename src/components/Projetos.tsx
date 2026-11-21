@@ -43,6 +43,7 @@ const projetos: Projeto[] = [
     descricao: 'App responsivo de transferência via Pix, do erro de destinatário ao saldo insuficiente.',
     tags: ['Entrevistas', 'Testes de usabilidade', 'Design system'],
     capa: '/home/capa-fast-money.webp',
+    href: rotas.fastMoney,
   },
   {
     nome: 'Redesign de placas de ruas',
