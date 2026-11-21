@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import { ArrowUpRight, Check, Frown, Monitor, Smartphone, Smile, Sparkles, X } from 'lucide-react';
 import { CabecalhoCase } from '../CabecalhoCase';
-import { Navegador } from '../Navegador';
 import { Celular } from '../Celular';
+import { Notebook } from '../Notebook';
 import { ImagemComReserva } from '../../components/ImagemComReserva';
 import { Ancora } from '../../components/Ancora';
 import { Comparador } from './Comparador';
@@ -58,9 +58,9 @@ export function HeroFastMoney() {
           <p className="mt-6 text-[14px] text-white/60">{hero.aviso}</p>
         </div>
 
-        {/* Desktop e celular sobrepostos, mostrando a tela de confirmação nas duas versões */}
+        {/* Notebook e celular em aço escovado, mostrando a tela de confirmação nas duas versões */}
         <div className="relative pb-10 pr-6 sm:pr-14">
-          <Navegador url="fastmoney.com.br/pix">
+          <Notebook>
             <img
               src={hero.imagemDesktop}
               alt={hero.altDesktop}
@@ -69,8 +69,8 @@ export function HeroFastMoney() {
               {...{ fetchpriority: 'high' }}
               className="block h-auto w-full"
             />
-          </Navegador>
-          <div className="absolute -bottom-2 right-0 w-[30%] min-w-[110px] max-w-[190px]">
+          </Notebook>
+          <div className="absolute -bottom-1 right-0 w-[27%] min-w-[100px] max-w-[180px]">
             <Celular src={hero.imagemMobile} alt={hero.altMobile} altura={hero.alturaMobile} prioridade />
           </div>
         </div>
