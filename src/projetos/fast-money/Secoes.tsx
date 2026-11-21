@@ -71,7 +71,7 @@ export function HeroFastMoney() {
             />
           </Notebook>
           <div className="absolute -bottom-1 right-0 w-[27%] min-w-[100px] max-w-[180px]">
-            <Celular src={hero.imagemMobile} alt={hero.altMobile} altura={hero.alturaMobile} prioridade />
+            <Celular src={hero.imagemMobile} alt={hero.altMobile} altura={hero.alturaMobile} prioridade compacto />
           </div>
         </div>
       </div>

@@ -10,6 +10,8 @@ interface Props {
   frente3d?: boolean;
   /** Desespelha a imagem da tela quando o aparelho inteiro está espelhado */
   telaEspelhada?: boolean;
+  /** Cantos menos arredondados, para celulares pequenos (os cantos padrão cortariam a tela) */
+  compacto?: boolean;
 }
 
 const LARGURA = 360;
@@ -29,16 +31,19 @@ const ALTURA_MAXIMA = 900; // telas mais longas aparecem cortadas embaixo, como 
  * Moldura de celular feita em código, para as telas puras exportadas do Figma.
  * A moldura segue a altura de cada tela, até ALTURA_MAXIMA.
  */
-export function Celular({ src, alt, altura = 852, prioridade = false, frente3d = false, telaEspelhada = false }: Props) {
+export function Celular({ src, alt, altura = 852, prioridade = false, frente3d = false, telaEspelhada = false, compacto = false }: Props) {
+  const raios = compacto
+    ? { corpo: 'rounded-[1.5rem]', moldura: 'rounded-[1.25rem]', tela: 'rounded-[0.9rem]' }
+    : { corpo: 'rounded-[2.6rem]', moldura: 'rounded-[2.3rem]', tela: 'rounded-[1.9rem]' };
   const alturaVisivel = Math.min(altura, ALTURA_MAXIMA);
   return (
     // Corpo em aço escovado (ver .aco-escovado no index.css), com botões laterais no mesmo metal
-    <div className={`aco-escovado relative rounded-[2.6rem] p-[5px] ${frente3d ? 'aco-escovado--sem-sombra' : ''}`}>
+    <div className={`aco-escovado relative ${raios.corpo} p-[5px] ${frente3d ? 'aco-escovado--sem-sombra' : ''}`}>
       {!frente3d && <BotoesLaterais />}
       {/* Moldura preta fina em volta da tela */}
-      <div className="rounded-[2.3rem] bg-[#0d0e11] p-[6px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]">
+      <div className={`${raios.moldura} bg-[#0d0e11] p-[6px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]`}>
         <div
-          className="relative overflow-hidden rounded-[1.9rem] bg-white"
+          className={`relative overflow-hidden ${raios.tela} bg-white`}
           style={{ aspectRatio: `${LARGURA} / ${alturaVisivel}` }}
         >
           <ImagemComReserva
