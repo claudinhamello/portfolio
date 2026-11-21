@@ -125,7 +125,7 @@
 
   /* Traço do item ativo: 2px, gradiente roxo → teal, 6px abaixo do texto */
   .nav-link {
-    @apply relative inline-flex items-center gap-1 py-1 text-[15px] font-medium text-white/80 transition-colors hover:text-white;
+    @apply relative inline-flex items-center gap-1 whitespace-nowrap py-1 text-[15px] font-medium text-white/80 transition-colors hover:text-white;
   }
   .nav-link::after {
     content: '';
