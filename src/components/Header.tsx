@@ -130,7 +130,7 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
               rolou ? 'ml-0 max-w-0 opacity-0' : 'ml-2.5 max-w-[96px] opacity-100'
             }`}
           >
-            <span>Claudia</span>
+            <span>Clau</span>
             <span>Mello</span>
           </span>
         </Ancora>
