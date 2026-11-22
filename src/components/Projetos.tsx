@@ -53,6 +53,7 @@ const projetos: Projeto[] = [
       'Nova sinalização de ruas a partir de uma pesquisa em que 6 de 8 motoristas tinham dificuldade para se localizar.',
     tags: ['Pesquisa', 'Diagnóstico', 'Redesign'],
     capa: '/home/capa-sinalizacao-urbana.webp',
+    href: rotas.placas,
   },
 ];
 

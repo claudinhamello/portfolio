@@ -10,6 +10,7 @@ export const rotas = {
   beready: '/beready-app',
   focusClinica: '/focus-clinica',
   fastMoney: '/fast-money',
+  placas: '/redesign-placas-de-ruas',
 };
 
 /** Item de navegação: `id` é a seção (para o destaque do item ativo), `href` é o destino */
@@ -24,6 +25,6 @@ export const projetosMenu = [
   { rotulo: 'BeReady', href: rotas.beready },
   { rotulo: 'Focus Clínica', href: rotas.focusClinica },
   { rotulo: 'Fast Money', href: rotas.fastMoney },
-  { rotulo: 'Redesign de placas de ruas', href: '/#projetos' },
+  { rotulo: 'Redesign de placas de ruas', href: rotas.placas },
 ];
 export const verTodosProjetos = { rotulo: 'Ver todos os projetos', href: '/#projetos' };
