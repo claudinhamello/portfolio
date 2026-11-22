@@ -194,11 +194,6 @@ export const aprendizados = {
         'Nem sempre a direção escolhida é exatamente a que imaginamos no início. Saber acolher decisões, me adaptar e buscar a melhor solução possível também é crescer como profissional.',
     },
   ],
-  divergencia: {
-    rotulo: 'Na prática',
-    texto:
-      'Eu queria um hero com cor escura, para causar mais impacto. Um dos desenvolvedores ponderou que, por ser a página de uma clínica, um tema claro combinaria mais com a imagem de saúde. Concordei, e o hero ficou claro.',
-  },
   tecnicos: [
     'Transformar um briefing em uma experiência digital estruturada',
     'Desenhar a apresentação de um produto SaaS',

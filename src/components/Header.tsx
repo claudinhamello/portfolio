@@ -180,7 +180,7 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
                   id="submenu-projetos"
                   ref={submenuRef}
                   onKeyDown={aoTeclarSubmenu}
-                  className="vidro-liquido w-64 rounded-[22px] p-2"
+                  className="vidro-liquido w-72 rounded-[22px] p-2"
                 >
                   {projetosMenu.map((p) => (
                     <li key={p.rotulo}>
@@ -194,13 +194,26 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
                     </li>
                   ))}
                   <li className="mt-1 border-t border-processo/15 pt-1">
-                    <Ancora
-                      href={verTodosProjetos.href}
-                      onClick={fecharTudo}
-                      className="block rounded-xl px-4 py-2.5 text-sm font-semibold text-processo transition-colors hover:bg-white/30 focus-visible:bg-white/30"
-                    >
-                      {verTodosProjetos.rotulo} →
-                    </Ancora>
+                    {verTodosProjetos.disponivel ? (
+                      <Ancora
+                        href={verTodosProjetos.href}
+                        onClick={fecharTudo}
+                        className="block rounded-xl px-4 py-2.5 text-sm font-semibold text-processo transition-colors hover:bg-white/30 focus-visible:bg-white/30"
+                      >
+                        {verTodosProjetos.rotulo} →
+                      </Ancora>
+                    ) : (
+                      // Desabilitado: não é link nem recebe foco (as setas do teclado só percorrem os <a>)
+                      <span
+                        aria-disabled="true"
+                        className="flex cursor-not-allowed items-center justify-between gap-2 whitespace-nowrap px-4 py-2.5 text-sm font-semibold text-processo/45"
+                      >
+                        {verTodosProjetos.rotulo}
+                        <span className="whitespace-nowrap rounded-full bg-processo/10 px-2 py-0.5 text-[12px] font-semibold text-processo/70">
+                          Em breve
+                        </span>
+                      </span>
+                    )}
                   </li>
                 </ul>
               </div>
@@ -260,13 +273,25 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
               <ul className="mt-2 flex flex-col">
                 {[...projetosMenu, verTodosProjetos].map((p) => (
                   <li key={p.rotulo}>
-                    <Ancora
-                      href={p.href}
-                      onClick={fecharTudo}
-                      className="block rounded-lg py-2 text-base font-semibold text-processo hover:text-processo/80"
-                    >
-                      {p.rotulo}
-                    </Ancora>
+                    {'disponivel' in p && !p.disponivel ? (
+                      <span
+                        aria-disabled="true"
+                        className="flex cursor-not-allowed items-center gap-2 py-2 text-base font-semibold text-processo/45"
+                      >
+                        {p.rotulo}
+                        <span className="whitespace-nowrap rounded-full bg-processo/10 px-2 py-0.5 text-[12px] font-semibold text-processo/70">
+                          Em breve
+                        </span>
+                      </span>
+                    ) : (
+                      <Ancora
+                        href={p.href}
+                        onClick={fecharTudo}
+                        className="block rounded-lg py-2 text-base font-semibold text-processo hover:text-processo/80"
+                      >
+                        {p.rotulo}
+                      </Ancora>
+                    )}
                   </li>
                 ))}
               </ul>

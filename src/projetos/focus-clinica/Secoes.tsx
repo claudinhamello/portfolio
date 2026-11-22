@@ -362,15 +362,6 @@ export function Aprendizados() {
               <span className="font-serif text-[20px] text-white/60">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="mt-3 text-[32px] leading-tight sm:text-[40px]">{r.titulo}</h3>
               <p className="mt-5 text-[17px] leading-relaxed text-white/85">{r.texto}</p>
-              {/* O exemplo concreto da divergência acompanha a reflexão sobre colaboração e escuta */}
-              {i === 0 && (
-                <div className="mt-6 rounded-2xl bg-white/10 p-5">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-gelo">
-                    {aprendizados.divergencia.rotulo}
-                  </p>
-                  <p className="mt-2 text-[16px] leading-relaxed text-white/90">{aprendizados.divergencia.texto}</p>
-                </div>
-              )}
             </article>
           ))}
         </div>

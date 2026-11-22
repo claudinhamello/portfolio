@@ -4,8 +4,8 @@ const pasta = '/projetos/beready';
 // Telas do app: 360 px de largura no Figma; `altura` é a altura da tela exportada.
 
 export const links = {
-  // Preencha com o link do protótipo. Vazio = o botão "Ver protótipo no Figma" não aparece.
-  prototipoFigma: '',
+  // Arquivo de design no Figma (botão "Ver no Figma" no hero). Vazio = o botão não aparece.
+  figma: 'https://www.figma.com/design/odLjIMLIdl7DiqSVQB1Zjd/BeReady?node-id=249-2&t=9a3vliUhS2NUk9uf-1',
 };
 
 export const hero = {
@@ -14,7 +14,6 @@ export const hero = {
   tituloDestaque: 'sempre preparada.',
   texto:
     'O BeReady ajuda famílias a montar, organizar e manter mochilas de emergência: o que falta, o que vence e quando agir, sem complicação e sem desperdício.',
-  status: 'Em desenvolvimento · alta fidelidade em andamento',
   // Dois celulares inclinados: o de trás (início) e o da frente (notificações)
   telas: [
     {

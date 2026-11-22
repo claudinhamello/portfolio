@@ -23,20 +23,17 @@ export function HeroBeReady() {
           <p className="mt-6 max-w-xl text-[18px] leading-relaxed text-secundario sm:text-[19px]">{hero.texto}</p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            {links.prototipoFigma && (
+            {links.figma && (
               <a
-                href={links.prototipoFigma}
+                href={links.figma}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-acento px-8 py-4 text-[15px] font-semibold text-white shadow-[0_12px_30px_-12px_rgb(var(--acento)/0.7)] transition hover:-translate-y-0.5"
               >
-                Ver protótipo no Figma
+                Ver no Figma
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>
             )}
-            <span className="rounded-full bg-acento-2/10 px-4 py-2 text-[13px] font-medium text-acento-2">
-              {hero.status}
-            </span>
           </div>
         </div>
 

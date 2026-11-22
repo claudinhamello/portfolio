@@ -27,4 +27,6 @@ export const projetosMenu = [
   { rotulo: 'Fast Money', href: rotas.fastMoney },
   { rotulo: 'Redesign de placas de ruas', href: rotas.placas },
 ];
-export const verTodosProjetos = { rotulo: 'Ver todos os projetos', href: '/#projetos' };
+// Desabilitado até existir a página com todos os projetos (Wok Saudável, SouJunior, Prothera, Passos de Luz).
+// Para habilitar, troque `disponivel` para true e aponte o href para a nova página.
+export const verTodosProjetos = { rotulo: 'Ver todos os projetos', href: '/#projetos', disponivel: false };
