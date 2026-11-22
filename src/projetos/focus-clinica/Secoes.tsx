@@ -116,7 +116,7 @@ export function FichaFocus() {
 
 export function Contexto() {
   return (
-    <section id="contexto" aria-labelledby="titulo-contexto" className="bg-white py-20 sm:py-28">
+    <section id="contexto" aria-labelledby="titulo-contexto" className="bg-papel py-20 sm:py-28">
       <div className={`${container} grid gap-10 lg:grid-cols-2 lg:gap-16`}>
         <CabecalhoCase id="titulo-contexto" rotulo={contexto.rotulo} titulo={contexto.titulo} />
         <div className="lg:pt-10">
@@ -161,7 +161,7 @@ export function Desafio() {
 
 export function Atuacao() {
   return (
-    <section id="atuacao" aria-labelledby="titulo-atuacao" className="bg-white py-20 sm:py-28">
+    <section id="atuacao" aria-labelledby="titulo-atuacao" className="bg-papel py-20 sm:py-28">
       <div className={container}>
         <CabecalhoCase id="titulo-atuacao" rotulo={atuacao.rotulo} titulo={atuacao.titulo} texto={atuacao.texto} />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -220,7 +220,7 @@ export function Solucao() {
 
 export function Decisoes() {
   return (
-    <section id="decisoes" aria-labelledby="titulo-decisoes" className="bg-white py-20 sm:py-28">
+    <section id="decisoes" aria-labelledby="titulo-decisoes" className="bg-papel py-20 sm:py-28">
       <div className={container}>
         <CabecalhoCase id="titulo-decisoes" rotulo={decisoes.rotulo} titulo={decisoes.titulo} texto={decisoes.texto} />
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -308,7 +308,7 @@ export function Colaboracao() {
 
 export function Resultado() {
   return (
-    <section id="resultado" aria-labelledby="titulo-resultado" className="bg-white py-20 sm:py-28">
+    <section id="resultado" aria-labelledby="titulo-resultado" className="bg-papel py-20 sm:py-28">
       <div className={container}>
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <CabecalhoCase id="titulo-resultado" rotulo={resultado.rotulo} titulo={resultado.titulo} texto={resultado.texto} />
@@ -362,15 +362,6 @@ export function Aprendizados() {
               <span className="font-serif text-[20px] text-white/60">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="mt-3 text-[32px] leading-tight sm:text-[40px]">{r.titulo}</h3>
               <p className="mt-5 text-[17px] leading-relaxed text-white/85">{r.texto}</p>
-              {/* O exemplo concreto da divergência acompanha a reflexão sobre colaboração e escuta */}
-              {i === 0 && (
-                <div className="mt-6 rounded-2xl bg-white/10 p-5">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-gelo">
-                    {aprendizados.divergencia.rotulo}
-                  </p>
-                  <p className="mt-2 text-[16px] leading-relaxed text-white/90">{aprendizados.divergencia.texto}</p>
-                </div>
-              )}
             </article>
           ))}
         </div>

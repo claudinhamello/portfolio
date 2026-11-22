@@ -20,8 +20,12 @@ Objetivo: um portfólio "fora da caixa", que mostre processo e maturidade sem pa
   portfólio + destaques do projeto via `--acento` / `--acento-2` (classes `text-acento`, `bg-acento-2` etc.), definidos na página.
 - Imagens: `public/home/`, `public/comum/` (compartilhadas, logos), `public/projetos/<projeto>/`. Telas de app: 360×852,
   na moldura `src/projetos/Celular.tsx`. Imagem que ainda não existe mostra um espaço reservado (`ImagemComReserva`).
-- Cases: BeReady (`/beready-app`, celulares 3D e coverflow) e Focus Clínica (`/focus-clinica`, janela de navegador
-  e vitrine desktop/tablet/mobile). Cada case deve variar a linguagem visual em relação aos outros.
+- Cases: BeReady (`/beready-app`, celulares 3D e coverflow), Focus Clínica (`/focus-clinica`, janela de navegador
+  e vitrine desktop/tablet/mobile), Fast Money (`/fast-money`, capítulos, comparador antes/depois e notebook de aço)
+  e Placas de ruas (`/redesign-placas-de-ruas`, ensaio fotográfico, pictogramas da pesquisa e placa com pontos
+  clicáveis). Cada case deve variar a linguagem visual em relação aos outros.
+- Fast Money: os números do estudo do Figma Make eram ilustrativos; só valem 7 entrevistas e 3 testes de usabilidade.
+- Placas: os números vêm da planilha de respostas (8 motoristas). Fotos sem EXIF (as originais tinham GPS).
 - Focus Clínica é fictício e voluntário: sempre deixar isso claro; números da landing page são ilustrativos.
 - Links: use `Ancora` (`#secao` na página; `/rota` ou `/#secao` para outra página, sem recarregar).
 
@@ -49,7 +53,7 @@ Objetivo: um portfólio "fora da caixa", que mostre processo e maturidade sem pa
 Ordem: Header → Hero → Projetos selecionados → Sobre mim → Como trabalho → Ferramentas e competências →
 Vamos conversar → Rodapé. Os textos de cada seção estão nos componentes em `src/components/`.
 
-- **Header:** cápsula "Liquid Glass" alinhada ao conteúdo, com "Claudia / Mello" ao lado do C. Menu: Início (nunca "Home"),
+- **Header:** cápsula de vidro levemente jateado, cor sólida (sem gradiente nem brilhos), alinhada ao conteúdo, com "Claudia / Mello" ao lado do C. Menu: Início (nunca "Home"),
   Projetos (submenu), Sobre mim, Como trabalho, Ferramentas. Contato só pelo CTA. Menu completo a partir de 1024px (`lg`). Item ativo com traço de 2px em gradiente. CTA "Vamos conversar".
 - **Hero:** "Você vê o resultado. / Eu mostro o caminho inteiro.", com foto à direita e ticker só de texto (`itensTicker`).
 - **Projetos:** BeReady (nome provisório, vai mudar), Focus Clínica, Fast Money e Redesign de placas de ruas. Passos de Luz não entra na Home.

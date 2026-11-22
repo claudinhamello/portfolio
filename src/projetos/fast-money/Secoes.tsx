@@ -71,7 +71,7 @@ export function HeroFastMoney() {
             />
           </Notebook>
           <div className="absolute -bottom-1 right-0 w-[27%] min-w-[100px] max-w-[180px]">
-            <Celular src={hero.imagemMobile} alt={hero.altMobile} altura={hero.alturaMobile} prioridade compacto />
+            <Celular src={hero.imagemMobile} alt={hero.altMobile} altura={hero.alturaMobile} prioridade />
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@ export function HeroFastMoney() {
 
 export function FichaFastMoney() {
   return (
-    <section aria-label="Ficha do projeto" className="border-b border-nevoa bg-white">
+    <section aria-label="Ficha do projeto" className="border-b border-nevoa bg-papel">
       <dl className={`${container} grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4`}>
         {ficha.map((f) => (
           <div key={f.rotulo} className="border-l-2 border-acento/30 pl-5">
@@ -167,7 +167,7 @@ export function LinhaDoTempo({ secaoAtiva }: { secaoAtiva: string | null }) {
 }
 
 /** Abertura de cada capítulo: número grande vazado + título */
-function Capitulo({ indice, fundo = 'bg-white', children }: { indice: number; fundo?: string; children: ReactNode }) {
+function Capitulo({ indice, fundo = 'bg-papel', children }: { indice: number; fundo?: string; children: ReactNode }) {
   const c = capitulos[indice];
   return (
     <section id={c.id} aria-labelledby={`titulo-${c.id}`} className={`${fundo} scroll-mt-20 py-20 sm:py-28`}>

@@ -23,20 +23,17 @@ export function HeroBeReady() {
           <p className="mt-6 max-w-xl text-[18px] leading-relaxed text-secundario sm:text-[19px]">{hero.texto}</p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            {links.prototipoFigma && (
+            {links.figma && (
               <a
-                href={links.prototipoFigma}
+                href={links.figma}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-acento px-8 py-4 text-[15px] font-semibold text-white shadow-[0_12px_30px_-12px_rgb(var(--acento)/0.7)] transition hover:-translate-y-0.5"
               >
-                Ver protótipo no Figma
+                Ver no Figma
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>
             )}
-            <span className="rounded-full bg-acento-2/10 px-4 py-2 text-[13px] font-medium text-acento-2">
-              {hero.status}
-            </span>
           </div>
         </div>
 
@@ -67,7 +64,7 @@ export function HeroBeReady() {
 
 export function FichaProjeto() {
   return (
-    <section aria-label="Ficha do projeto" className="border-y border-nevoa bg-white">
+    <section aria-label="Ficha do projeto" className="border-y border-nevoa bg-papel">
       <dl className={`${container} grid gap-x-12 gap-y-7 py-10 sm:grid-cols-2 lg:grid-cols-4`}>
         {ficha.map((f) => (
           <div key={f.rotulo}>
@@ -116,7 +113,7 @@ export function Problema() {
 
 export function Pesquisa() {
   return (
-    <section id="pesquisa" aria-labelledby="titulo-pesquisa" className="bg-white py-20 sm:py-28">
+    <section id="pesquisa" aria-labelledby="titulo-pesquisa" className="bg-papel py-20 sm:py-28">
       <div className={container}>
         <CabecalhoCase id="titulo-pesquisa" rotulo={pesquisa.rotulo} titulo={pesquisa.titulo} />
 
@@ -159,7 +156,7 @@ export function Pesquisa() {
 export function DesignSystem() {
   const { tipografia, cores } = designSystem;
   return (
-    <section id="design-system" aria-labelledby="titulo-design-system" className="bg-white py-20 sm:py-28">
+    <section id="design-system" aria-labelledby="titulo-design-system" className="bg-papel py-20 sm:py-28">
       <div className={container}>
         <CabecalhoCase
           id="titulo-design-system"
