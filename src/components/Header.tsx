@@ -102,7 +102,7 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
 
   return (
     <header
-      className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-5 text-white transition-[padding] duration-300 sm:px-8 ${
+      className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-5 text-processo transition-[padding] duration-300 sm:px-8 ${
         rolou ? 'pt-2.5' : 'pt-4 sm:pt-5'
       }`}
     >
@@ -126,7 +126,7 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
           {/* Nome em duas linhas, com a mesma altura do logo (32px); some ao rolar */}
           <span
             aria-hidden="true"
-            className={`flex h-8 flex-col justify-center overflow-hidden whitespace-nowrap font-serif text-[17px] leading-4 tracking-wide text-white/90 transition-all duration-300 ${
+            className={`flex h-8 flex-col justify-center overflow-hidden whitespace-nowrap font-serif text-[17px] leading-4 tracking-wide text-processo transition-all duration-300 ${
               rolou ? 'ml-0 max-w-0 opacity-0' : 'ml-2.5 max-w-[96px] opacity-100'
             }`}
           >
@@ -187,17 +187,17 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
                       <Ancora
                         href={p.href}
                         onClick={fecharTudo}
-                        className="block rounded-xl px-4 py-2.5 text-sm text-white/85 transition-colors hover:bg-white/10 hover:text-white focus-visible:bg-white/10"
+                        className="block rounded-xl px-4 py-2.5 text-sm font-semibold text-processo transition-colors hover:bg-white/30 focus-visible:bg-white/30"
                       >
                         {p.rotulo}
                       </Ancora>
                     </li>
                   ))}
-                  <li className="mt-1 border-t border-white/15 pt-1">
+                  <li className="mt-1 border-t border-processo/15 pt-1">
                     <Ancora
                       href={verTodosProjetos.href}
                       onClick={fecharTudo}
-                      className="block rounded-xl px-4 py-2.5 text-sm font-semibold text-gelo transition-colors hover:bg-white/10 focus-visible:bg-white/10"
+                      className="block rounded-xl px-4 py-2.5 text-sm font-semibold text-processo transition-colors hover:bg-white/30 focus-visible:bg-white/30"
                     >
                       {verTodosProjetos.rotulo} →
                     </Ancora>
@@ -220,7 +220,7 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
         </nav>
 
         {/* CTA — desktop */}
-        <a href="#contato" className="btn-acao hidden whitespace-nowrap px-6 py-3 text-[15px] lg:inline-flex">
+        <a href="#contato" className="btn-acao hidden whitespace-nowrap px-6 py-3 text-[15px] shadow-none hover:shadow-none lg:inline-flex">
           Vamos conversar
         </a>
 
@@ -256,14 +256,14 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
               </Ancora>
             </li>
             <li className="pt-3">
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">Projetos</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-processo/70">Projetos</span>
               <ul className="mt-2 flex flex-col">
                 {[...projetosMenu, verTodosProjetos].map((p) => (
                   <li key={p.rotulo}>
                     <Ancora
                       href={p.href}
                       onClick={fecharTudo}
-                      className="block rounded-lg py-2 text-base text-white/85 hover:text-white"
+                      className="block rounded-lg py-2 text-base font-semibold text-processo hover:text-processo/80"
                     >
                       {p.rotulo}
                     </Ancora>

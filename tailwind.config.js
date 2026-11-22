@@ -23,6 +23,8 @@ export default {
         gelo: '#A8F3F8',
         tinta: '#12304D',
         claro: '#F5F9FD',
+        // Fundo das seções que antes eram branco puro (o header usa o branco)
+        papel: '#F4F7F5',
         rodape: '#161F33',
         // Seções claras (design system do Figma)
         secundario: '#45647D',

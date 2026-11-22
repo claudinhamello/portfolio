@@ -53,7 +53,7 @@ Objetivo: um portfólio "fora da caixa", que mostre processo e maturidade sem pa
 Ordem: Header → Hero → Projetos selecionados → Sobre mim → Como trabalho → Ferramentas e competências →
 Vamos conversar → Rodapé. Os textos de cada seção estão nos componentes em `src/components/`.
 
-- **Header:** cápsula "Liquid Glass" alinhada ao conteúdo, com "Claudia / Mello" ao lado do C. Menu: Início (nunca "Home"),
+- **Header:** cápsula de vidro levemente jateado, cor sólida (sem gradiente nem brilhos), alinhada ao conteúdo, com "Claudia / Mello" ao lado do C. Menu: Início (nunca "Home"),
   Projetos (submenu), Sobre mim, Como trabalho, Ferramentas. Contato só pelo CTA. Menu completo a partir de 1024px (`lg`). Item ativo com traço de 2px em gradiente. CTA "Vamos conversar".
 - **Hero:** "Você vê o resultado. / Eu mostro o caminho inteiro.", com foto à direita e ticker só de texto (`itensTicker`).
 - **Projetos:** BeReady (nome provisório, vai mudar), Focus Clínica, Fast Money e Redesign de placas de ruas. Passos de Luz não entra na Home.

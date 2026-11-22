@@ -67,7 +67,7 @@ export function HeroBeReady() {
 
 export function FichaProjeto() {
   return (
-    <section aria-label="Ficha do projeto" className="border-y border-nevoa bg-white">
+    <section aria-label="Ficha do projeto" className="border-y border-nevoa bg-papel">
       <dl className={`${container} grid gap-x-12 gap-y-7 py-10 sm:grid-cols-2 lg:grid-cols-4`}>
         {ficha.map((f) => (
           <div key={f.rotulo}>
@@ -116,7 +116,7 @@ export function Problema() {
 
 export function Pesquisa() {
   return (
-    <section id="pesquisa" aria-labelledby="titulo-pesquisa" className="bg-white py-20 sm:py-28">
+    <section id="pesquisa" aria-labelledby="titulo-pesquisa" className="bg-papel py-20 sm:py-28">
       <div className={container}>
         <CabecalhoCase id="titulo-pesquisa" rotulo={pesquisa.rotulo} titulo={pesquisa.titulo} />
 
@@ -159,7 +159,7 @@ export function Pesquisa() {
 export function DesignSystem() {
   const { tipografia, cores } = designSystem;
   return (
-    <section id="design-system" aria-labelledby="titulo-design-system" className="bg-white py-20 sm:py-28">
+    <section id="design-system" aria-labelledby="titulo-design-system" className="bg-papel py-20 sm:py-28">
       <div className={container}>
         <CabecalhoCase
           id="titulo-design-system"

@@ -43,7 +43,7 @@ export function HeroPlacas() {
 
 export function FichaPlacas() {
   return (
-    <section aria-label="Ficha do projeto" className="border-y border-nevoa bg-white">
+    <section aria-label="Ficha do projeto" className="border-y border-nevoa bg-papel">
       <dl className={`${container} grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4`}>
         {ficha.map((f) => (
           <div key={f.rotulo} className="border-l-2 border-acento/30 pl-5">
@@ -58,7 +58,7 @@ export function FichaPlacas() {
 
 export function Problema() {
   return (
-    <section id="problema" aria-labelledby="titulo-problema" className="bg-white py-20 sm:py-28">
+    <section id="problema" aria-labelledby="titulo-problema" className="bg-papel py-20 sm:py-28">
       <div className={container}>
         <CabecalhoCase id="titulo-problema" rotulo={problema.rotulo} titulo={problema.titulo} texto={problema.texto} />
       </div>
@@ -151,7 +151,7 @@ export function Pesquisa() {
 
 export function Dores() {
   return (
-    <section id="dores" aria-labelledby="titulo-dores" className="bg-white py-20 sm:py-28">
+    <section id="dores" aria-labelledby="titulo-dores" className="bg-papel py-20 sm:py-28">
       <div className={container}>
         <CabecalhoCase id="titulo-dores" rotulo={dores.rotulo} titulo={dores.titulo} />
         <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
@@ -183,7 +183,7 @@ export function Placa() {
 
 export function NaRua() {
   return (
-    <section id="na-rua" aria-labelledby="titulo-na-rua" className="bg-white py-20 sm:py-28">
+    <section id="na-rua" aria-labelledby="titulo-na-rua" className="bg-papel py-20 sm:py-28">
       <div className={container}>
         <CabecalhoCase id="titulo-na-rua" rotulo={naRua.rotulo} titulo={naRua.titulo} texto={naRua.texto} />
         <div className="mt-12 grid gap-8 md:grid-cols-2">
@@ -233,7 +233,7 @@ export function Apresentacao() {
 
 export function Acessibilidade() {
   return (
-    <section id="acessibilidade" aria-labelledby="titulo-acessibilidade" className="bg-white py-20 sm:py-28">
+    <section id="acessibilidade" aria-labelledby="titulo-acessibilidade" className="bg-papel py-20 sm:py-28">
       <div className={container}>
         <CabecalhoCase id="titulo-acessibilidade" rotulo={acessibilidade.rotulo} titulo={acessibilidade.titulo} />
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
