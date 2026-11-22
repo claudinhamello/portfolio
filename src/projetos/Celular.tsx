@@ -10,8 +10,6 @@ interface Props {
   frente3d?: boolean;
   /** Desespelha a imagem da tela quando o aparelho inteiro está espelhado */
   telaEspelhada?: boolean;
-  /** Cantos menos arredondados, para celulares pequenos (os cantos padrão cortariam a tela) */
-  compacto?: boolean;
 }
 
 const LARGURA = 360;
@@ -25,16 +23,17 @@ function BotoesLaterais() {
     </>
   );
 }
+// Raios dos cantos: corpo de aço, moldura preta e tela. O Celular3D usa o mesmo raio do corpo na espessura.
+// Cantos moderados: com raios maiores, os cantos cortavam a barra de navegação na base das telas.
+const RAIOS = { corpo: 'rounded-[1.5rem]', moldura: 'rounded-[1.25rem]', tela: 'rounded-[0.9rem]' };
 const ALTURA_MAXIMA = 900; // telas mais longas aparecem cortadas embaixo, como se estivessem roladas
 
 /**
  * Moldura de celular feita em código, para as telas puras exportadas do Figma.
  * A moldura segue a altura de cada tela, até ALTURA_MAXIMA.
  */
-export function Celular({ src, alt, altura = 852, prioridade = false, frente3d = false, telaEspelhada = false, compacto = false }: Props) {
-  const raios = compacto
-    ? { corpo: 'rounded-[1.5rem]', moldura: 'rounded-[1.25rem]', tela: 'rounded-[0.9rem]' }
-    : { corpo: 'rounded-[2.6rem]', moldura: 'rounded-[2.3rem]', tela: 'rounded-[1.9rem]' };
+export function Celular({ src, alt, altura = 852, prioridade = false, frente3d = false, telaEspelhada = false }: Props) {
+  const raios = RAIOS;
   const alturaVisivel = Math.min(altura, ALTURA_MAXIMA);
   return (
     // Corpo em aço escovado (ver .aco-escovado no index.css), com botões laterais no mesmo metal
@@ -111,7 +110,7 @@ export function Celular3D({
       {profundidades.map((p) => (
         <span key={p} aria-hidden="true" className="absolute inset-0">
           <span
-            className={`absolute inset-0 rounded-[2.6rem] ${p === espessura ? 'aco-traseira' : 'aco-lateral'}`}
+            className={`absolute inset-0 ${RAIOS.corpo} ${p === espessura ? 'aco-traseira' : 'aco-lateral'}`}
             style={naProfundidade(p)}
           />
           {p === meio && (
