@@ -4,7 +4,7 @@ import { Contato } from '../components/Contato';
 import { Rodape } from '../components/Rodape';
 import { useSecaoAtiva } from '../hooks/useSecaoAtiva';
 import { rotas, type ItemMenu } from '../conteudo';
-import { Aprendizados, Entender, HeroWok, Mise, Processo, Solucao } from '../projetos/wok-saudavel/Secoes';
+import { Aprendizados, Entender, ComponentesWok, HeroWok, Processo, Solucao } from '../projetos/wok-saudavel/Secoes';
 
 // "Início" volta para a Home
 const inicio: ItemMenu = { id: 'home', rotulo: 'Início', href: rotas.home };
@@ -55,7 +55,7 @@ export function WokSaudavel() {
         <Entender />
         <Processo />
         <Solucao />
-        <Mise />
+        <ComponentesWok />
         <Aprendizados />
         <Contato />
       </main>

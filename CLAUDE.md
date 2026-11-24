@@ -23,11 +23,16 @@ Objetivo: um portfólio "fora da caixa", que mostre processo e maturidade sem pa
 - Cases: BeReady (`/beready-app`, celulares 3D e coverflow), Focus Clínica (`/focus-clinica`, janela de navegador
   e vitrine desktop/tablet/mobile), Fast Money (`/fast-money`, capítulos, comparador antes/depois e notebook de aço)
   e Placas de ruas (`/redesign-placas-de-ruas`, ensaio fotográfico, pictogramas da pesquisa e placa com pontos
-  clicáveis) e Wok Saudável (`/wok-saudavel`, linguagem de receita: ficha, modo de preparo, mise en place com
-  componentes recriados em código). Cada case deve variar a linguagem visual em relação aos outros.
+  clicáveis) e Wok Saudável (`/wok-saudavel`, linguagem de receita: ficha, modo de preparo, seção de
+  componentes recriados em código) e Hackathon SouJunior (`/hackathon-soujunior`, squad como grupo de RPG, explorador
+  das seções da LP, crachá pendurado). Cada case deve variar a linguagem visual em relação aos outros.
 - Fast Money: os números do estudo do Figma Make eram ilustrativos; só valem 7 entrevistas e 3 testes de usabilidade.
 - Wok Saudável: pesquisa e testes de 2023 (8 entrevistas, 5 no estudo de usabilidade); telas mobile redesenhadas com IA.
   Não mencionar que tablet/desktop não foram redesenhadas. Fora da Home por ora (só no menu Projetos).
+- SouJunior: hackathon de 15 dias (11–24/set/2026), Squad DevLevelUp. Destacar a primeira experiência em squad.
+  A LP não venceu: não dizer que foi implementada. A outra pessoa de UX/UI só fez a ilustração do mascote:
+  mostrar os fatos (backlog do Notion) sem nome nem crítica. Números das telas da LP não são afirmações do case.
+  Na Home, aparece como faixa abaixo dos 4 cards (`DestaqueSquad` em `Projetos.tsx`).
 - Placas: os números vêm da planilha de respostas (8 motoristas). Fotos sem EXIF (as originais tinham GPS).
 - Focus Clínica é fictício e voluntário: sempre deixar isso claro; números da landing page são ilustrativos.
 - Links: use `Ancora` (`#secao` na página; `/rota` ou `/#secao` para outra página, sem recarregar).
@@ -64,6 +69,6 @@ Vamos conversar → Rodapé. Os textos de cada seção estão nos componentes em
   (só mouse), foco por teclado ou toque. Sem botão de pausa (decisão dela). Não avança sozinho com movimento reduzido.
 - **Ferramentas:** 7 competências, todos os cards do mesmo tamanho (sem esticar card para fechar a última fileira),
   com logos (`public/*_logo.svg`) e rodapé "Usado em". Hover/foco/toque numa ferramenta acende os cards que a usam.
-  Projetos fora da Home (Wok Saudável, SouJunior, Prothera, Passos de Luz) terão página em "Ver todos os projetos".
+  Projetos fora da Home (Wok Saudável, Prothera, Passos de Luz) terão página em "Ver todos os projetos".
 - **Contato:** LinkedIn e e-mail como botões outlined iguais, sem "Fale comigo". Dados em `src/conteudo.ts`.
 - Imagens em `public/` (WebP): capas 16:9, `sobre-mim-claudia-3x2`, `faixa-urubici-3x1`, `claudia-hero`.

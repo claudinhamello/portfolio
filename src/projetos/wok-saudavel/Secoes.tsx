@@ -387,7 +387,7 @@ export function Solucao() {
 
 const iconesAcessibilidade = [Headphones, Contrast, Hand, Type];
 
-export function Mise() {
+export function ComponentesWok() {
   return (
     <section id="componentes" aria-labelledby="titulo-componentes" className="relative overflow-hidden bg-papel py-20 sm:py-28">
       <Ramo className="pointer-events-none absolute -left-8 bottom-10 hidden w-28 -rotate-12 text-acento/15 lg:block" />

@@ -248,6 +248,15 @@
   animation: vapor 3.2s ease-in-out infinite;
 }
 
+/* ---------- Crachá balançando (SouJunior) ---------- */
+@keyframes balanco {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(1deg); }
+}
+.cracha-balanco {
+  animation: balanco 5s ease-in-out infinite;
+}
+
 /* ---------- Movimento reduzido ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -263,6 +272,10 @@
   }
   .ticker-trilho {
     animation: none;
+  }
+  .cracha-balanco {
+    animation: none;
+    transform: rotate(4deg);
   }
   .vapor-fio {
     animation: none;
