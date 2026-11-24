@@ -213,7 +213,7 @@ export const solucao = {
 };
 
 export const componentes = {
-  rotulo: 'Mise en place',
+  rotulo: 'Componentes',
   titulo: 'Componentes prontos para usar.',
   texto:
     'Antes de montar as telas, criei no Figma os componentes do app, com variantes para cada estado. Aqui eles foram recriados em código: toque para experimentar.',

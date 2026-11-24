@@ -12,6 +12,7 @@ export const rotas = {
   fastMoney: '/fast-money',
   placas: '/redesign-placas-de-ruas',
   wok: '/wok-saudavel',
+  soujunior: '/hackathon-soujunior',
 };
 
 /** Item de navegação: `id` é a seção (para o destaque do item ativo), `href` é o destino */
@@ -28,7 +29,8 @@ export const projetosMenu = [
   { rotulo: 'Fast Money', href: rotas.fastMoney },
   { rotulo: 'Redesign de placas de ruas', href: rotas.placas },
   { rotulo: 'Wok Saudável', href: rotas.wok },
+  { rotulo: 'Hackathon SouJunior', href: rotas.soujunior },
 ];
-// Oculto no menu até existir a página com todos os projetos (SouJunior, Prothera, Passos de Luz).
+// Oculto no menu até existir a página com todos os projetos (Prothera, Passos de Luz).
 // Para mostrar, troque `disponivel` para true e aponte o href para a nova página.
 export const verTodosProjetos = { rotulo: 'Ver todos os projetos', href: '/#projetos', disponivel: false };

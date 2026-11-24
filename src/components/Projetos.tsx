@@ -104,6 +104,49 @@ function CardProjeto({ p }: { p: Projeto }) {
   );
 }
 
+/**
+ * Faixa abaixo dos cards: a experiência em squad multidisciplinar (Hackathon SouJunior).
+ * Fica fora da grade de 4 projetos para não mudar a Home, mas à vista de quem recruta.
+ */
+function DestaqueSquad() {
+  return (
+    <Ancora
+      href={rotas.soujunior}
+      className="group mt-6 grid overflow-hidden rounded-3xl border border-nevoa bg-white transition duration-300 hover:-translate-y-1 hover:border-roxo/40 hover:shadow-[0_24px_50px_-30px_rgba(18,59,90,0.45)] md:grid-cols-[1.05fr_1fr] lg:mt-8"
+    >
+      <img
+        src="/projetos/soujunior/daily-squad.webp"
+        alt="Daily da Squad DevLevelUp por videochamada, com nove integrantes"
+        loading="lazy"
+        width={1600}
+        height={739}
+        className="h-full min-h-[200px] w-full object-cover object-left"
+      />
+      <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-roxo">Experiência em squad · Hackathon SouJunior 2026</p>
+        <h3 className="mt-2 text-[28px] leading-tight text-processo sm:text-[32px]">Minha primeira squad multidisciplinar</h3>
+        <p className="mt-3 text-[15px] leading-relaxed text-secundario">
+          15 dias com PM, PO, mentor, devs e QA para criar a landing page de doações da comunidade. Do kickoff às dailys e ao
+          handoff, acompanhando os devs até a entrega.
+        </p>
+        <ul className="mt-5 flex flex-wrap gap-2" aria-label="Competências">
+          {['Trabalho em squad', 'UI Design', 'Handoff com devs'].map((t) => (
+            <li key={t} className="rounded-full bg-nevoa px-3 py-1 text-[12px] font-semibold text-processo">
+              {t}
+            </li>
+          ))}
+        </ul>
+        <span className="mt-6 inline-flex items-center gap-1.5 text-[15px] font-semibold text-roxo">
+          Ver o case
+          <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+            →
+          </span>
+        </span>
+      </div>
+    </Ancora>
+  );
+}
+
 export function Projetos() {
   return (
     <section id="projetos" aria-labelledby="titulo-projetos" className="bg-claro py-20 sm:py-28">
@@ -119,6 +162,7 @@ export function Projetos() {
             <CardProjeto key={p.nome} p={p} />
           ))}
         </ul>
+        <DestaqueSquad />
       </div>
     </section>
   );
