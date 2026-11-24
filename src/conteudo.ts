@@ -11,6 +11,7 @@ export const rotas = {
   focusClinica: '/focus-clinica',
   fastMoney: '/fast-money',
   placas: '/redesign-placas-de-ruas',
+  wok: '/wok-saudavel',
 };
 
 /** Item de navegação: `id` é a seção (para o destaque do item ativo), `href` é o destino */
@@ -26,7 +27,8 @@ export const projetosMenu = [
   { rotulo: 'Focus Clínica', href: rotas.focusClinica },
   { rotulo: 'Fast Money', href: rotas.fastMoney },
   { rotulo: 'Redesign de placas de ruas', href: rotas.placas },
+  { rotulo: 'Wok Saudável', href: rotas.wok },
 ];
-// Desabilitado até existir a página com todos os projetos (Wok Saudável, SouJunior, Prothera, Passos de Luz).
-// Para habilitar, troque `disponivel` para true e aponte o href para a nova página.
+// Oculto no menu até existir a página com todos os projetos (SouJunior, Prothera, Passos de Luz).
+// Para mostrar, troque `disponivel` para true e aponte o href para a nova página.
 export const verTodosProjetos = { rotulo: 'Ver todos os projetos', href: '/#projetos', disponivel: false };

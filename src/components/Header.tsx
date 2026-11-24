@@ -193,8 +193,9 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
                       </Ancora>
                     </li>
                   ))}
-                  <li className="mt-1 border-t border-processo/15 pt-1">
-                    {verTodosProjetos.disponivel ? (
+                  {/* "Ver todos os projetos" só aparece quando a página existir (verTodosProjetos.disponivel) */}
+                  {verTodosProjetos.disponivel && (
+                    <li className="mt-1 border-t border-processo/15 pt-1">
                       <Ancora
                         href={verTodosProjetos.href}
                         onClick={fecharTudo}
@@ -202,19 +203,8 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
                       >
                         {verTodosProjetos.rotulo} →
                       </Ancora>
-                    ) : (
-                      // Desabilitado: não é link nem recebe foco (as setas do teclado só percorrem os <a>)
-                      <span
-                        aria-disabled="true"
-                        className="flex cursor-not-allowed items-center justify-between gap-2 whitespace-nowrap px-4 py-2.5 text-sm font-semibold text-processo/45"
-                      >
-                        {verTodosProjetos.rotulo}
-                        <span className="whitespace-nowrap rounded-full bg-processo/10 px-2 py-0.5 text-[12px] font-semibold text-processo/70">
-                          Em breve
-                        </span>
-                      </span>
-                    )}
-                  </li>
+                    </li>
+                  )}
                 </ul>
               </div>
             </li>
@@ -271,27 +261,15 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
             <li className="pt-3">
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-processo/70">Projetos</span>
               <ul className="mt-2 flex flex-col">
-                {[...projetosMenu, verTodosProjetos].map((p) => (
+                {[...projetosMenu, ...(verTodosProjetos.disponivel ? [verTodosProjetos] : [])].map((p) => (
                   <li key={p.rotulo}>
-                    {'disponivel' in p && !p.disponivel ? (
-                      <span
-                        aria-disabled="true"
-                        className="flex cursor-not-allowed items-center gap-2 py-2 text-base font-semibold text-processo/45"
-                      >
-                        {p.rotulo}
-                        <span className="whitespace-nowrap rounded-full bg-processo/10 px-2 py-0.5 text-[12px] font-semibold text-processo/70">
-                          Em breve
-                        </span>
-                      </span>
-                    ) : (
-                      <Ancora
-                        href={p.href}
-                        onClick={fecharTudo}
-                        className="block rounded-lg py-2 text-base font-semibold text-processo hover:text-processo/80"
-                      >
-                        {p.rotulo}
-                      </Ancora>
-                    )}
+                    <Ancora
+                      href={p.href}
+                      onClick={fecharTudo}
+                      className="block rounded-lg py-2 text-base font-semibold text-processo hover:text-processo/80"
+                    >
+                      {p.rotulo}
+                    </Ancora>
                   </li>
                 ))}
               </ul>
