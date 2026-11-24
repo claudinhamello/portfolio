@@ -342,11 +342,11 @@ function Arquitetura() {
     <div className="mt-20 rounded-3xl border border-white/15 bg-white/[0.06] p-7 sm:p-9">
       <h3 className="font-serif text-[30px] leading-tight text-white">{solucao.arquitetura.titulo}</h3>
       <p className="mt-2 max-w-2xl text-[16px] leading-relaxed text-white/80">{solucao.arquitetura.texto}</p>
-      <ol className="mt-8 grid gap-3 lg:grid-cols-6 lg:gap-2">
+      <ol className="mt-8 grid auto-rows-fr gap-3 lg:grid-cols-6 lg:gap-2">
         {caminho.map((c, i) => (
-          <li key={c.titulo} className="relative flex gap-4 lg:block">
+          <li key={c.titulo} className="relative flex">
             <div
-              className={`flex-1 rounded-2xl px-4 py-4 lg:min-h-[112px] ${
+              className={`flex-1 rounded-2xl px-4 py-4 ${
                 c.desvio ? 'border-2 border-dashed border-[#F2B705]/70' : 'bg-white/10'
               }`}
             >

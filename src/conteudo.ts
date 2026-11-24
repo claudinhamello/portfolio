@@ -29,6 +29,6 @@ export const projetosMenu = [
   { rotulo: 'Redesign de placas de ruas', href: rotas.placas },
   { rotulo: 'Wok Saudável', href: rotas.wok },
 ];
-// Desabilitado até existir a página com todos os projetos (SouJunior, Prothera, Passos de Luz).
-// Para habilitar, troque `disponivel` para true e aponte o href para a nova página.
+// Oculto no menu até existir a página com todos os projetos (SouJunior, Prothera, Passos de Luz).
+// Para mostrar, troque `disponivel` para true e aponte o href para a nova página.
 export const verTodosProjetos = { rotulo: 'Ver todos os projetos', href: '/#projetos', disponivel: false };
