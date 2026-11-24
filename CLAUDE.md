@@ -23,8 +23,11 @@ Objetivo: um portfólio "fora da caixa", que mostre processo e maturidade sem pa
 - Cases: BeReady (`/beready-app`, celulares 3D e coverflow), Focus Clínica (`/focus-clinica`, janela de navegador
   e vitrine desktop/tablet/mobile), Fast Money (`/fast-money`, capítulos, comparador antes/depois e notebook de aço)
   e Placas de ruas (`/redesign-placas-de-ruas`, ensaio fotográfico, pictogramas da pesquisa e placa com pontos
-  clicáveis). Cada case deve variar a linguagem visual em relação aos outros.
+  clicáveis) e Wok Saudável (`/wok-saudavel`, linguagem de receita: ficha, modo de preparo, mise en place com
+  componentes recriados em código). Cada case deve variar a linguagem visual em relação aos outros.
 - Fast Money: os números do estudo do Figma Make eram ilustrativos; só valem 7 entrevistas e 3 testes de usabilidade.
+- Wok Saudável: pesquisa e testes de 2023 (8 entrevistas, 5 no estudo de usabilidade); telas mobile redesenhadas com IA.
+  Não mencionar que tablet/desktop não foram redesenhadas. Fora da Home por ora (só no menu Projetos).
 - Placas: os números vêm da planilha de respostas (8 motoristas). Fotos sem EXIF (as originais tinham GPS).
 - Focus Clínica é fictício e voluntário: sempre deixar isso claro; números da landing page são ilustrativos.
 - Links: use `Ancora` (`#secao` na página; `/rota` ou `/#secao` para outra página, sem recarregar).

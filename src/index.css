@@ -238,6 +238,16 @@
   }
 }
 
+/* ---------- Vapor (Wok Saudável) ---------- */
+@keyframes vapor {
+  0% { opacity: 0; transform: translateY(8px); }
+  40% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+.vapor-fio {
+  animation: vapor 3.2s ease-in-out infinite;
+}
+
 /* ---------- Movimento reduzido ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -253,6 +263,10 @@
   }
   .ticker-trilho {
     animation: none;
+  }
+  .vapor-fio {
+    animation: none;
+    opacity: 0.7;
   }
   *,
   *::before,

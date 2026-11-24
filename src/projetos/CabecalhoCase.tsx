@@ -6,14 +6,16 @@ interface Props {
   titulo: ReactNode;
   texto?: ReactNode;
   escuro?: boolean;
+  /** Cor do rótulo, quando o projeto pede outra (padrão: acento-2, ou gelo no fundo escuro) */
+  classeRotulo?: string;
 }
 
 // Cabeçalho das seções das páginas de projeto: rótulo na cor 2 do projeto + título serifado + texto
-export function CabecalhoCase({ id, rotulo, titulo, texto, escuro = false }: Props) {
+export function CabecalhoCase({ id, rotulo, titulo, texto, escuro = false, classeRotulo }: Props) {
   return (
     <div className="max-w-3xl">
       <p
-        className={`text-[13px] font-semibold uppercase tracking-[0.16em] ${escuro ? 'text-gelo' : 'text-acento-2'}`}
+        className={`text-[13px] font-semibold uppercase tracking-[0.16em] ${classeRotulo ?? (escuro ? 'text-gelo' : 'text-acento-2')}`}
       >
         {rotulo}
       </p>
