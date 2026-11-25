@@ -157,7 +157,7 @@ export function Dores() {
         <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {dores.itens.map((d, i) => (
             <li key={d.titulo} className={`${card} p-6`}>
-              <span className="font-serif text-[40px] leading-none text-acento/40">{i + 1}</span>
+              <span className="font-serif text-[40px] leading-none text-acento/60">{i + 1}</span>
               <h3 className="mt-4 text-[26px] leading-tight text-processo">{d.titulo}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-secundario">{d.texto}</p>
             </li>

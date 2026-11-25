@@ -15,7 +15,7 @@ export function SobreMim() {
             <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-roxo">Sobre mim</p>
             <h2 id="titulo-sobre" className="mt-3 text-[40px] leading-[1.08] text-processo sm:text-[52px]">
               Para mim, bom design começa pela{' '}
-              <span className="texto-gradiente italic">escuta.</span>
+              <span className="texto-gradiente texto-gradiente--fundo-claro italic">escuta.</span>
             </h2>
             <p className="mt-7 max-w-[560px] text-[17px] leading-[1.7] text-secundario sm:text-lg">
               Antes de desenhar telas, gosto de entender quem vai usar o produto, em que situação e com qual
@@ -38,7 +38,7 @@ export function SobreMim() {
         <ol className="mt-16 grid gap-8 border-t border-processo/15 pt-10 sm:grid-cols-3 sm:gap-10">
           {valores.map((v, i) => (
             <li key={v.titulo}>
-              <span className="texto-gradiente font-serif text-xl">{String(i + 1).padStart(2, '0')}</span>
+              <span className="texto-gradiente texto-gradiente--fundo-claro font-serif text-xl">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="mt-2 text-[26px] leading-tight text-processo">{v.titulo}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-secundario">{v.texto}</p>
             </li>

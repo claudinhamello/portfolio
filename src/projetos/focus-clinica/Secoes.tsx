@@ -359,7 +359,7 @@ export function Aprendizados() {
         <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
           {aprendizados.reflexoes.map((r, i) => (
             <article key={r.titulo} className="border-t border-white/25 pt-8">
-              <span className="font-serif text-[20px] text-white/60">{String(i + 1).padStart(2, '0')}</span>
+              <span className="font-serif text-[20px] text-white/85">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="mt-3 text-[32px] leading-tight sm:text-[40px]">{r.titulo}</h3>
               <p className="mt-5 text-[17px] leading-relaxed text-white/85">{r.texto}</p>
             </article>

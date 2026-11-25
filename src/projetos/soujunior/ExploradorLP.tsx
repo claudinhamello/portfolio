@@ -34,7 +34,7 @@ export function ExploradorLP() {
                 }`}
               >
                 <span
-                  className={`font-mono text-[12px] font-bold ${ativa ? 'text-[#00F0FF]' : 'text-white/40 group-hover:text-white/60'}`}
+                  className={`font-mono text-[12px] font-bold ${ativa ? 'text-[#00F0FF]' : 'text-white/65 group-hover:text-white/85'}`}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>

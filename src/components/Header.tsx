@@ -231,7 +231,7 @@ export function Header({ secaoAtiva, inicio, secoes }: HeaderProps) {
         <button
           ref={botaoMobileRef}
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full lg:hidden"
           aria-expanded={mobileAberto}
           aria-controls="menu-mobile"
           aria-label={mobileAberto ? 'Fechar menu' : 'Abrir menu'}

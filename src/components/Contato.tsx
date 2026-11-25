@@ -26,7 +26,7 @@ export function Contato() {
       {/* Celular: véu azul-marinho, mais forte à esquerda (o texto ocupa a largura toda) */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(15,42,74,0.92)_0%,rgba(15,42,74,0.6)_55%,rgba(15,42,74,0.25)_100%)] md:hidden"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(15,42,74,0.92)_0%,rgba(15,42,74,0.82)_55%,rgba(15,42,74,0.6)_100%)] md:hidden"
       />
       {/* Tablet e desktop: desfoque atrás do texto, sumindo para a direita, onde a foto fica nítida */}
       <div
@@ -36,14 +36,14 @@ export function Contato() {
       {/* Sombra leve só atrás do texto, para o branco manter contraste sobre o céu */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 hidden bg-[linear-gradient(90deg,rgba(11,34,64,0.42)_0%,rgba(11,34,64,0.2)_45%,transparent_70%)] md:block"
+        className="absolute inset-0 -z-10 hidden bg-[linear-gradient(90deg,rgba(11,34,64,0.62)_0%,rgba(11,34,64,0.45)_45%,transparent_75%)] md:block"
       />
 
       <div className="mx-auto max-w-pagina px-5 sm:px-8">
         <div className="max-w-2xl">
           <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-gelo">Vamos conversar?</p>
           <h2 id="titulo-contato" className="mt-3 text-[40px] leading-[1.08] sm:text-[56px]">
-            Estou sempre aberta a novos <span className="texto-gradiente italic">desafios e conexões.</span>
+            Estou sempre aberta a novos <span className="texto-gradiente texto-gradiente--sobre-foto italic">desafios e conexões.</span>
           </h2>
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white/85 sm:text-lg">
             Se você busca alguém para pesquisar, desenhar e testar soluções digitais, vamos conversar.

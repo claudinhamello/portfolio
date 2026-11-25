@@ -39,10 +39,10 @@
     @apply translate-y-0;
   }
 
-  /* Gradiente de ação roxo → teal */
+  /* Gradiente de ação roxo → teal. O teal é mais escuro que o da marca para o texto branco passar no AA (4,7:1) */
   .btn-acao {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold text-white transition duration-300;
-    background: linear-gradient(100deg, #6c4fd8 0%, #22b5b5 100%);
+    background: linear-gradient(100deg, #6c4fd8 0%, #138080 100%);
     box-shadow: 0 10px 30px -10px rgba(108, 79, 216, 0.65);
   }
   .btn-acao:hover {
@@ -59,6 +59,14 @@
     /* evita cortar a cauda das itálicas */
     padding-right: 0.08em;
     padding-bottom: 0.06em;
+  }
+  /* Variações com contraste AA (medido letra a letra contra o fundo real):
+     escura para fundos claros, clara para o título do contato sobre a foto */
+  .texto-gradiente.texto-gradiente--fundo-claro {
+    background-image: linear-gradient(95deg, #5b3fd0 0%, #2f62c4 50%, #0d7875 100%);
+  }
+  .texto-gradiente.texto-gradiente--sobre-foto {
+    background-image: linear-gradient(95deg, #b7a5ff 0%, #8fb8ff 50%, #5fe3dc 100%);
   }
 
   /* ---------- Vidro jateado ---------- */

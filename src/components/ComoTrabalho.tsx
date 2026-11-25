@@ -142,7 +142,7 @@ export function ComoTrabalho() {
                   aria-label={`Etapa ${i + 1}: ${etapa.titulo}`}
                   onFocus={() => setAtivo(i)}
                   className={`relative z-10 flex h-11 w-11 items-center justify-center rounded-full border-2 font-serif text-xl transition-colors duration-300 ease-in-out ${
-                    eAtivo ? 'border-ametista bg-ametista text-white' : 'border-ametista/70 bg-processo text-white'
+                    eAtivo ? 'border-ametista bg-[#7457E0] text-white' : 'border-ametista/70 bg-processo text-white'
                   }`}
                 >
                   {i + 1}
