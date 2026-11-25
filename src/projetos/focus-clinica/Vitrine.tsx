@@ -60,8 +60,9 @@ export function Vitrine() {
           {/* Área com rolagem própria: a página inteira fica dentro dela */}
           <div
             tabIndex={0}
+            role="region"
             aria-label={`Página inteira na versão ${versao.rotulo.toLowerCase()}, com rolagem`}
-            className="h-[min(68svh,720px)] overflow-y-auto overscroll-contain focus-visible:outline-none"
+            className="h-[min(68svh,720px)] overflow-y-auto overscroll-contain outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-acento"
           >
             <ImagemComReserva
               key={versao.id}

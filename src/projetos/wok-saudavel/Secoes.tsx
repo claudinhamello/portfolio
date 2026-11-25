@@ -350,11 +350,11 @@ function Arquitetura() {
                 c.desvio ? 'border-2 border-dashed border-[#F2B705]/70' : 'bg-white/10'
               }`}
             >
-              <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#F2B705]">
+              <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#F8D56B]">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <p className="mt-1 text-[16px] font-semibold leading-snug text-white">{c.titulo}</p>
-              {c.alternativa && <p className="mt-1 text-[14px] leading-snug text-white/70">{c.alternativa}</p>}
+              {c.alternativa && <p className="mt-1 text-[14px] leading-snug text-white/85">{c.alternativa}</p>}
               {c.desvio && <p className="mt-1 text-[14px] leading-snug text-[#F8D56B]">{c.desvio}</p>}
             </div>
           </li>
@@ -431,30 +431,30 @@ export function Aprendizados() {
         className="absolute inset-0 -z-10 bg-[radial-gradient(50%_60%_at_100%_0%,rgba(242,183,5,0.28),transparent_70%)]"
       />
       <div className={container}>
-        <CabecalhoCase id="titulo-aprendizados" escuro classeRotulo="text-[#F8D56B]" rotulo={aprendizados.rotulo} titulo={aprendizados.titulo} />
+        <CabecalhoCase id="titulo-aprendizados" escuro classeRotulo="text-[#FCE6A0]" rotulo={aprendizados.rotulo} titulo={aprendizados.titulo} />
         <div className="mt-14 grid gap-12 lg:grid-cols-3 lg:gap-12">
           <article className="border-t border-white/25 pt-8">
-            <h3 className="font-sans text-[13px] font-semibold uppercase tracking-[0.16em] text-[#F8D56B]">Impacto</h3>
+            <h3 className="font-sans text-[13px] font-semibold uppercase tracking-[0.16em] text-[#FCE6A0]">Impacto</h3>
             <p className="mt-4 font-serif text-[24px] leading-snug sm:text-[26px]">{aprendizados.impacto}</p>
           </article>
           <article className="border-t border-white/25 pt-8">
-            <h3 className="font-sans text-[13px] font-semibold uppercase tracking-[0.16em] text-[#F8D56B]">O que aprendi</h3>
+            <h3 className="font-sans text-[13px] font-semibold uppercase tracking-[0.16em] text-[#FCE6A0]">O que aprendi</h3>
             <p className="mt-4 font-serif text-[24px] leading-snug sm:text-[26px]">{aprendizados.aprendi}</p>
           </article>
           <article className="border-t border-white/25 pt-8">
-            <h3 className="font-sans text-[13px] font-semibold uppercase tracking-[0.16em] text-[#F8D56B]">Próximos passos</h3>
+            <h3 className="font-sans text-[13px] font-semibold uppercase tracking-[0.16em] text-[#FCE6A0]">Próximos passos</h3>
             <ul className="mt-4 grid gap-3">
               {aprendizados.proximos.map((p) => (
                 <li key={p} className="flex gap-2 text-[17px] leading-snug text-white/90">
-                  <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-[#F8D56B]" aria-hidden="true" />
+                  <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-[#FCE6A0]" aria-hidden="true" />
                   {p}
                 </li>
               ))}
             </ul>
           </article>
         </div>
-        <aside className="mt-14 max-w-2xl rounded-3xl bg-white/10 p-7">
-          <h3 className="flex items-center gap-2 font-sans text-[13px] font-semibold uppercase tracking-[0.16em] text-[#F8D56B]">
+        <aside className="mt-14 max-w-2xl rounded-3xl bg-black/15 p-7">
+          <h3 className="flex items-center gap-2 font-sans text-[13px] font-semibold uppercase tracking-[0.16em] text-[#FCE6A0]">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             Onde usei IA neste projeto
           </h3>

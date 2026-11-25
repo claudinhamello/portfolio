@@ -60,7 +60,7 @@ export function Fluxo() {
                   }`}
                 >
                   <span
-                    className={`font-serif text-[18px] leading-none ${atual ? 'text-acento' : 'text-white/45 group-hover:text-white/70'}`}
+                    className={`font-serif text-[18px] leading-none ${atual ? 'text-acento' : 'text-white/60 group-hover:text-white/80'}`}
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>

@@ -39,10 +39,10 @@
     @apply translate-y-0;
   }
 
-  /* Gradiente de ação roxo → teal */
+  /* Gradiente de ação roxo → teal. O teal é mais escuro que o da marca para o texto branco passar no AA (4,7:1) */
   .btn-acao {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold text-white transition duration-300;
-    background: linear-gradient(100deg, #6c4fd8 0%, #22b5b5 100%);
+    background: linear-gradient(100deg, #6c4fd8 0%, #138080 100%);
     box-shadow: 0 10px 30px -10px rgba(108, 79, 216, 0.65);
   }
   .btn-acao:hover {
