@@ -60,6 +60,14 @@
     padding-right: 0.08em;
     padding-bottom: 0.06em;
   }
+  /* Variações com contraste AA (medido letra a letra contra o fundo real):
+     escura para fundos claros, clara para o título do contato sobre a foto */
+  .texto-gradiente.texto-gradiente--fundo-claro {
+    background-image: linear-gradient(95deg, #5b3fd0 0%, #2f62c4 50%, #0d7875 100%);
+  }
+  .texto-gradiente.texto-gradiente--sobre-foto {
+    background-image: linear-gradient(95deg, #b7a5ff 0%, #8fb8ff 50%, #5fe3dc 100%);
+  }
 
   /* ---------- Vidro jateado ---------- */
   /* Cor sólida translúcida, com desfoque leve do que passa por trás. Sem gradientes nem brilhos. */

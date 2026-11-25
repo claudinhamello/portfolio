@@ -122,7 +122,7 @@ function CardCompetencia({ c, numero, ativa, aoAtivar }: CardProps) {
           pelas 4 bordas, em gradiente. Ver .borda-revelada no index.css */}
       <span aria-hidden="true" className={`borda-revelada ${contem ? 'borda-revelada--ativa' : ''}`} />
 
-      <span className="texto-gradiente relative font-serif text-[22px] leading-none">
+      <span className="texto-gradiente texto-gradiente--fundo-claro relative font-serif text-[22px] leading-none">
         {String(numero).padStart(2, '0')}
       </span>
       <h3 className="relative mt-4 text-[24px] leading-tight text-processo">{c.titulo}</h3>

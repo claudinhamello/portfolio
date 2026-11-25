@@ -54,6 +54,8 @@ Objetivo: um portfólio "fora da caixa", que mostre processo e maturidade sem pa
 - **Instrument Serif** em todos os títulos e **Manrope** no resto. Nenhum texto de leitura abaixo de 14px nem tag abaixo de 12px.
 - Largura: sempre `max-w-pagina` (containers) / `max-w-conteudo` (cápsula do header). Crescem com a tela (25% da sobra lateral), mantendo header, títulos e foto alinhados.
 - Cores no `tailwind.config.js`. Gradiente de ação roxo → teal (`.btn-acao`), de destaque roxo → azul → teal (`.texto-gradiente`).
+  O gradiente original só passa no AA sobre o fundo escuro do hero. Em fundo claro use `.texto-gradiente--fundo-claro` e sobre
+  foto `.texto-gradiente--sobre-foto` (com véu escuro atrás). Texto em gradiente abaixo de 24px precisa de 4,5:1.
 - Logo: "C" de Claudia. Os cortes diagonais simbolizam construção. Ele se desenha uma vez ao carregar e respeita `prefers-reduced-motion`.
 
 ## Home
